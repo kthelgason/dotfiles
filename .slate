@@ -1,0 +1,67 @@
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+# Key bindings
+bind esc:cmd hint
+
+# Focus Bindings
+bind right:cmd;ctrl    focus right
+bind left:cmd;ctrl     focus left
+bind up:cmd;ctrl       focus up
+bind down:cmd;ctrl     focus down
+bind up:cmd;alt   focus behind
+bind down:cmd;alt focus behind
+
+# ======================================
+# Abstract positions
+# ======================================
+alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
+alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
+alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+ 
+alias leftthird move screenOriginX;screenOriginY screenSizeX/3;screenSizeY
+alias rightthird move screenOriginX+2*screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
+alias midthird move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
+alias left23 move screenOriginX;screenOriginY 2*screenSizeX/3;screenSizeY
+alias right23 move screenOriginX+screenSizeX/3;screenOriginY 2*screenSizeX/3;screenSizeY
+ 
+alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
+alias topright corner top-right resize:screenSizeX/2;screenSizeY/2
+alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
+alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
+
+alias topleft9 move screenOriginX;screenOriginY screenSizeX/3;screenSizeY/3
+alias topright9 move screenOriginX+2*screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY/3
+alias topmid9 move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY/3
+alias midleft9 move screenOriginX;screenOriginY+screenSizeY/3 screenSizeX/3;screenSizeY/3
+alias midright9 move screenOriginX+2*screenSizeX/3;screenOriginY+screenSizeY/3 screenSizeX/3;screenSizeY/3
+alias middle9 move screenOriginX+screenSizeX/3;screenOriginY+screenSizeY/3 screenSizeX/3;screenSizeY/3
+alias bottomleft9 move screenOriginX;screenOriginY+2*screenSizeY/3 screenSizeX/3;screenSizeY/3
+alias bottomright9 move screenOriginX+2*screenSizeX/3;screenOriginY+2*screenSizeY/3 screenSizeX/3;screenSizeY/3
+alias bottommid9 move screenOriginX+screenSizeX/3;screenOriginY+2*screenSizeY/3 screenSizeX/3;screenSizeY/3
+
+bind q:ctrl;alt	${leftthird}
+bind w:ctrl;alt	${midthird}
+bind e:ctrl;alt	${rightthird}
+bind a:ctrl;alt	${left23}
+bind s:ctrl;alt	${right23}
+
+bind g:ctrl;alt	${bottomleft}
+bind h:ctrl;alt	${bottomright}
+bind t:ctrl;alt	${topleft}
+bind y:ctrl;alt	${topright}
+
+bind left:ctrl;alt	${lefthalf}
+bind right:ctrl;alt	${righthalf}
+bind up:ctrl;alt	${full}
+
+bind 1:ctrl;alt	${topleft9}
+bind 2:ctrl;alt ${topmid9}
+bind 3:ctrl;alt	${topright9}
+bind 4:ctrl;alt	${midleft9}
+bind 5:ctrl;alt	${middle9}
+bind 6:ctrl;alt	${midright9}
+bind 7:ctrl;alt	${bottomleft9}
+bind 8:ctrl;alt	${bottommid9}
+bind 9:ctrl;alt	${bottomright9}
