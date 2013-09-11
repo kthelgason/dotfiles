@@ -37,7 +37,7 @@ set incsearch
 set magic
 
 " split edit vimrc
-nnoremap <leader>ev <C-w><C-s><C-l>:e ~/.vimrc.after<CR>
+nnoremap <leader>evr <C-w><C-s><C-l>:e ~/.vimrc.after<CR>
 
 set encoding=utf8
 set expandtab
@@ -49,6 +49,7 @@ set ai
 set si
 set wrap
 
+" make j and k work as expected for long lines
 map j gj
 map k gk
 
@@ -61,8 +62,9 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-map <leader><tab> :tabn<cr>
 
+" cycle through tabs browser style
+map <leader><tab> :tabn<cr>
 
 
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
@@ -87,11 +89,12 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
 " -----------------------------------------------
 "  latex compilation
 "  ----------------------------------------------
 
-" autocmd BufWrite *.tex <esc>:! latexmk -pdf %
+autocmd BufWritePost *.tex silent !pdflatex %
 
 " -----------------------------------------------
 "  helper functions
