@@ -28,6 +28,13 @@ if has("gui_running")
 endif
 set ttyfast
 set hid
+set autoread
+
+" Show suspicious characters
+set listchars=nbsp:¬,tab:>-,extends:»,precedes:«,trail:•
+
+" Do syntax highlighting from the start
+autocmd BufEnter * :syntax sync fromstart
 
 set ignorecase
 set smartcase
@@ -69,6 +76,10 @@ map <leader><tab> :tabn<cr>
 
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
+" command to enable soft-wrap
+command! -nargs=* Wrap set wrap linebreak nolist
+
+
 " Return to last edit postition when opening files
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -94,6 +105,7 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 "  latex compilation
 "  ----------------------------------------------
 
+autocmd BufEnter *.tex :color base16-tomorrow
 autocmd BufWritePost *.tex silent !pdflatex %
 
 " -----------------------------------------------

@@ -8,7 +8,6 @@ bind esc:cmd hint
 # Focus Bindings
 bind right:cmd;ctrl    focus right
 bind left:cmd;ctrl     focus left
-bind up:cmd;ctrl       focus up
 bind down:cmd;ctrl     focus down
 bind up:cmd;alt   focus behind
 bind down:cmd;alt focus behind

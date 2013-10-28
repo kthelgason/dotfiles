@@ -1,0 +1,80 @@
+#! /usr/local/bin/python3
+
+import os
+import subprocess
+from lock import FileLockException, FileLock
+try:
+    import queue
+except ImportError:
+    import Queue as queue
+import sys
+
+REVERSED = False
+
+PDF_READER = "/usr/bin/open"
+EDITOR = "/usr/local/bin/mvim"
+
+def open_pdf(s):
+    pdf = list(filter(lambda n: n.endswith("pdf"), os.listdir('.')))[0]
+    if sys.platform == 'win32':
+        os.chdir('..')
+        subprocess.Popen([PDF_READER, os.path.join(s,pdf)]).wait()
+        os.chdir(s)
+    else:
+        os.popen('%s "%s"'%(PDF_READER, pdf)).read()
+
+def open_editor():
+    if sys.platform == 'win32':
+        subprocess.Popen([EDITOR, '-1-einkunn.txt']).wait()
+    else:
+        os.popen("%s -- -1-einkunn.txt" % EDITOR).read()
+
+
+def main():
+    os.chdir(sys.argv[1])
+    done_file = os.path.join(os.path.dirname(sys.argv[0]), 'grade_done.state')
+    done = []
+    if os.path.exists(done_file):
+        f = open(done_file)
+        done = f.read().splitlines()
+        f.close()
+
+    path = open(done_file, 'a')
+
+
+    listdir = os.listdir('.')
+    if REVERSED:
+        listdir = listdir[::-1]
+    q = queue.deque([i for i in filter(os.path.isdir, listdir) if i not in done])
+
+    print(q)
+
+    lock = []
+
+    while len(q) > 0:
+        print(lock)
+        s = q.pop()
+
+        print('Moving to: %s'%os.getcwd())
+        os.chdir(s)
+
+        try:
+            with FileLock('pdf', timeout=1):
+                try:
+                    open_pdf(s)
+                except Exception as e:
+                    print(e)
+                    pass
+                open_editor()
+                path.write(s + "\n")
+
+                q.extend(lock[::-1])
+                #Heather
+                lock.clear()
+        except FileLockException:
+            lock.append(s)
+
+        os.chdir('..')
+
+if __name__ == '__main__':
+    main()
