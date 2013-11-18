@@ -1,5 +1,10 @@
+let mapleader=","
+let g:mapleader=","
+
+execute pathogen#infect()
+
 set background=dark
-color tomorrow-night-bright
+color base16-default
 
 " fast saving
 nmap <leader>w :w!<cr>
@@ -10,6 +15,7 @@ set wildmenu
 
 " ignore compiled files
 set wildignore=*.o,*~,*.pyc
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildignore+=.git\*,.hg\*,.svn\*
 set wildmode=list:full
 
@@ -52,6 +58,9 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+"Conque term
+map <leader>zsh :ConqueTermSplit zsh<cr>
+
 set ai
 set si
 set wrap
@@ -70,9 +79,24 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" arrow keys move visible lines
+inoremap <Down> <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"<CR>
+inoremap <Up> <C-R>=pumvisible() ? "\<lt>Up>" : "\<lt>C-O>gk"<CR>
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+
 " cycle through tabs browser style
 map <leader><tab> :tabn<cr>
 
+" CtrlP
+let ctrlp_map = '<c-p>'
+let ctrlp_cmd = 'CtrlP'
+let ctrlp_working_path_mode = 'ra'
+
+" NERDTree
+map <leader>n :NERDTreeToggle<CR>
 
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
