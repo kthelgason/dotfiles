@@ -9,7 +9,7 @@ execute pathogen#infect()
 
 set t_Co=256
 set background=dark
-color base16-default
+color ir_black
 
 " fast saving
 nmap <leader>w :w!<cr>
@@ -35,6 +35,7 @@ set guioptions-=L
 set guioptions-=r
 if has("gui_running")
     set guifont=Consolas:h15
+    color base16-default
 endif
 
 " Show suspicious characters
@@ -49,7 +50,7 @@ set hlsearch
 set incsearch
 
 " split edit vimrc
-nnoremap <leader>evr <C-w><C-s><C-l>:e ~/.vimrc.after<CR>
+nnoremap <leader>evr <C-w><C-s><C-l>:e ~/.vimrc<CR>
 
 set expandtab
 set smarttab
@@ -74,6 +75,7 @@ map <leader>zsh :ConqueTermSplit zsh<cr>
 " make j and k work as expected for long lines
 map j gj
 map k gk
+
 
 map <return> :nohlsearch<cr>
 map <space> /
@@ -166,6 +168,11 @@ function! RemoveFancyCharacters()
     :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
 endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
+
+" -----------------------------------------------
+"  markdown 
+"  ----------------------------------------------
+let g:vim_markdown_folding_disabled=1
 
 
 " -----------------------------------------------
