@@ -54,6 +54,7 @@ nnoremap <leader>evr <C-w><C-s><C-l>:e ~/.vimrc<CR>
 
 set expandtab
 set smarttab
+set number
 set shiftwidth=4
 set tabstop=4
 set autoindent
@@ -62,6 +63,7 @@ set showmatch
 set cursorline
 set showcmd
 set showtabline=2
+set backspace=indent,eol,start
 
 " Store temporary files in a central spot
 set backup
