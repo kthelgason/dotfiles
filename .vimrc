@@ -63,6 +63,7 @@ set showmatch
 set cursorline
 set showcmd
 set showtabline=2
+set scrolloff=3
 set backspace=indent,eol,start
 
 " Store temporary files in a central spot
