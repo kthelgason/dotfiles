@@ -116,8 +116,8 @@ command! -nargs=* Wrap set wrap linebreak nolist
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 " Return to last edit postition when opening files
 autocmd BufReadPost *
@@ -128,9 +128,11 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 set laststatus=2
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 map 0 ^
+
+autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+autocmd FileType python set sw=4 sts=4 et
 
 func! DeleteTrailingWS()
     exe "normal mz"
@@ -176,7 +178,7 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 "  markdown 
 "  ----------------------------------------------
 let g:vim_markdown_folding_disabled=1
-
+let g:syntastic_python_checkers = ['flake8']
 
 " -----------------------------------------------
 "  latex compilation
