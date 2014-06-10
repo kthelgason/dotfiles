@@ -1,0 +1,26 @@
+[user]
+	name = Kári Helgason
+	email = kthelgason@gmail.com
+[core]
+	excludesfile = /Users/kthelgason/.gitignore_global
+	autocrlf = input
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[color]
+	ui = true
+[push]
+	default = simple
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    di = diff
+    aa = add --all
+    p  = push
+
+    l = "!source ~/.githelpers && pretty_git_log"
+

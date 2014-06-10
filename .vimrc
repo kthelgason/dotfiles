@@ -71,10 +71,6 @@ set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-"Conque term
-map <leader>zsh :ConqueTermSplit zsh<cr>
-
-
 " make j and k work as expected for long lines
 map j gj
 map k gk
@@ -128,6 +124,7 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 set laststatus=2
+set pastetoggle=<F2>
 
 map 0 ^
 
