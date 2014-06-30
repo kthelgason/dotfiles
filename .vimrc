@@ -1,7 +1,8 @@
+set nocompatible
+
 let mapleader=","
 let g:mapleader=","
 
-set nocompatible
 syntax on
 filetype plugin indent on
 
@@ -22,11 +23,8 @@ set wildmenu
 " ignore compiled files
 set wildignore=*.o,*~,*.pyc
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-set wildignore+=.git\*,.hg\*,.svn\*
+set wildignore+=.git/*,.hg/*,.svn/*
 set wildmode=list:full
-
-" change working directory automatically
-set autochdir
 
 set ruler
 set cmdheight=2
@@ -34,9 +32,10 @@ set guioptions-=T
 set guioptions-=L
 set guioptions-=r
 if has("gui_running")
-    set guifont=Consolas:h15
+    set guifont=Anonymous\ Pro:h13
     color base16-default
 endif
+set ttyfast
 
 " Show suspicious characters
 set listchars=nbsp:¬,tab:>-,extends:»,precedes:«,trail:•
@@ -63,39 +62,43 @@ set showmatch
 set cursorline
 set showcmd
 set showtabline=2
-set scrolloff=3
+set scrolloff=5
+set noerrorbells
 set backspace=indent,eol,start
+set autoread
 
 " Store temporary files in a central spot
 set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
+set backupdir=~/.vim/sessions
+set directory=~/.vim/sessions
 " make j and k work as expected for long lines
 map j gj
 map k gk
-
 
 map <return> :nohlsearch<cr>
 map <space> /
 map <c-space> ?
 map <leader>a :A<cr>
+inoremap jj <esc>
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-" arrow keys move visible lines
-inoremap <Down> <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"<CR>
-inoremap <Up> <C-R>=pumvisible() ? "\<lt>Up>" : "\<lt>C-O>gk"<CR>
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
+"
+" Tagbar plugin settings
+map <leader>tb :TagbarToggle<cr>
+map <leader>T :TagbarOpenAutoClose<cr>
 
 " cycle through tabs browser style
 map <leader><tab> :tabn<cr>
+
+" cd to current dir
+map <leader>cd :cd %:p:h<cr>
+
+
+" sudo write
+cmap W! w !sudo tee % >/dev/null
 
 " CtrlP
 let ctrlp_map = '<c-p>'
@@ -104,6 +107,7 @@ let ctrlp_working_path_mode = 'ra'
 
 " NERDTree
 map <leader>n :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$', '\.dSYM$']
 
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
@@ -113,7 +117,14 @@ command! -nargs=* Wrap set wrap linebreak nolist
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %{HasPaste()}[%n%M]\ %f\ [%R%H%W%Y]\ %{fugitive#statusline()}\ CWD:%<%{getcwd()}\ loc:\ %l/%L,%v
+set statusline+=%{SyntasticStatuslineFlag()}
+
+" Syntastic settings
+let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=5
+let g:syntastic_python_checkers = ['pep8']
+map <leader>b :CtrlPBuffer<cr>
 
 " Return to last edit postition when opening files
 autocmd BufReadPost *
@@ -123,13 +134,13 @@ autocmd BufReadPost *
 
 " Remember info about open buffers on close
 set viminfo^=%
-set laststatus=2
-set pastetoggle=<F2>
 
+set pastetoggle=<F2>
 map 0 ^
 
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 autocmd FileType python set sw=4 sts=4 et
+map <leader>p <esc>:! pyflakes %<cr>
 
 func! DeleteTrailingWS()
     exe "normal mz"
@@ -175,22 +186,20 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 "  markdown 
 "  ----------------------------------------------
 let g:vim_markdown_folding_disabled=1
-let g:syntastic_python_checkers = ['flake8']
 
 " -----------------------------------------------
 "  latex compilation
 "  ----------------------------------------------
-
 autocmd BufEnter *.tex :color base16-tomorrow
 autocmd BufWritePost *.tex silent !pdflatex %
 
 " -----------------------------------------------
 "  helper functions
 "  ----------------------------------------------
-
 function! HasPaste()
     if &paste
         return 'PASTE MODE'
     en
     return ''
 endfunction
+
