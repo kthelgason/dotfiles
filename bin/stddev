@@ -1,0 +1,8 @@
+#!/bin/bash
+
+data=$(cat)
+printf "%s\n" $data > tmpfile.txt
+avg=$(awk -f 'avg.awk' < tmpfile.txt)
+stddev=$(awk -f 'stddev.awk' $avg < tmpfile.txt)
+rm tmpfile.txt
+echo "Standard deviation of data: $stddev"
