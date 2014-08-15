@@ -1,0 +1,6 @@
+\set PROMPT1 '%[%033[%0;35m%]%M %n@%/%R%[%033[0m%]%# '
+\pset null '[NULL]'
+\x auto
+\set VERBOSITY verbose
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
