@@ -11,9 +11,14 @@ FORMAT="$HASH{$RELATIVE_TIME{$AUTHOR{$REFS $SUBJECT"
 
 function pretty_git_log() {
     git log --graph --pretty="tformat:$FORMAT" $* |
+    sed 's/ ago//g' |
     column -t -s "{" |
     less -FXRS
 }
 function git_wtf() {
     git log --pretty=format:"%C(auto,yellow)%h%C(auto)%d%C(auto,reset) by %C(auto,blue)%cn%C(auto,reset), %C(auto,cyan)%ar%C(auto,reset)%n %s%n" --stat
+}
+
+function git_remove_untracked() {
+    git st | awk '{if(NR != 1) {print $2}}' | xargs rm -rf    
 }

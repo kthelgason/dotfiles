@@ -4,9 +4,14 @@
 [core]
 	excludesfile = /Users/kthelgason/.gitignore_global
 	autocrlf = input
+	editor = vim
+[diff]
+    tool = mvimdiff
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
+[difftool "mvimdiff"]
+        cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -16,13 +21,18 @@
 	default = simple
 [alias]
     st = status -sb
-    ci = commit -m
+    ci = commit
     co = checkout
     di = diff
+    dc = diff --cached
     aa = add --all
     a = add 
     p  = push
     br = branch -v
+    bull = pull
     wtf = "!source ~/dotfiles/bin/githelpers && git_wtf"
     l = "!source ~/dotfiles/bin/githelpers && pretty_git_log"
+    remove-untracked = "!source ~/dotfiles/bin/githelpers && git_remove_untracked"
 
+[help]
+	autocorrect = 1
