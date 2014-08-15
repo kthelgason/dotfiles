@@ -3,7 +3,6 @@ set nocompatible
 let mapleader=","
 let g:mapleader=","
 
-syntax on
 filetype plugin indent on
 
 execute pathogen#infect()
@@ -11,9 +10,7 @@ execute pathogen#infect()
 set t_Co=256
 set background=dark
 color ir_black
-
-" fast saving
-nmap <leader>w :w!<cr>
+syntax on
 
 set history=10000
 set so=7
@@ -32,10 +29,21 @@ set guioptions-=T
 set guioptions-=L
 set guioptions-=r
 if has("gui_running")
-    set guifont=Anonymous\ Pro:h13
-    color base16-default
+    set guifont=Anonymous\ Pro:h16
+    color grb256
 endif
 set ttyfast
+
+" Custom colors
+hi User1 guifg=#ffdad8  guibg=#880c0e
+hi User2 guifg=#000000  guibg=#F4905C
+hi User3 guifg=#292b00  guibg=#f4f597
+hi User4 guifg=#112605  guibg=#aefe7B
+hi User5 guifg=#051d00  guibg=#7dcc7d
+hi User7 guifg=#ffffff  guibg=#880c0e gui=bold
+hi User8 guifg=#ffffff  guibg=#5b7fbb
+hi User9 guifg=#ffffff  guibg=#810085
+hi User0 guifg=#ffffff  guibg=#094afe
 
 " Show suspicious characters
 set listchars=nbsp:¬,tab:>-,extends:»,precedes:«,trail:•
@@ -114,17 +122,24 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " command to enable soft-wrap
 command! -nargs=* Wrap set wrap linebreak nolist
 
+" enforce 80 char row limit
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline=\ %{HasPaste()}[%n%M]\ %f\ [%R%H%W%Y]\ %{fugitive#statusline()}\ CWD:%<%{getcwd()}\ loc:\ %l/%L,%v
+set statusline=\ %{HasPaste()}[%n%M]\ %f\ [%R%H%W%Y]\ %{fugitive#statusline()}
+set statusline+=\ CWD:%<%{getcwd()}\ loc:\ %l/%L,%v
 set statusline+=%{SyntasticStatuslineFlag()}
+
 
 " Syntastic settings
 let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=5
-let g:syntastic_python_checkers = ['pep8']
-map <leader>b :CtrlPBuffer<cr>
+let g:syntastic_enable_signs=0
+let g:syntastic_check_on_wq=0
+let g:syntastic_python_checkers = ['pyflakes']
 
 " Return to last edit postition when opening files
 autocmd BufReadPost *
@@ -138,9 +153,9 @@ set viminfo^=%
 set pastetoggle=<F2>
 map 0 ^
 
-autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+autocmd FileType ruby,haml,eruby,yaml,html,sass,cucumber set ai sw=2 sts=2 et
 autocmd FileType python set sw=4 sts=4 et
-map <leader>p <esc>:! pyflakes %<cr>
+map <leader>b :CtrlPBuffer<cr>
 
 func! DeleteTrailingWS()
     exe "normal mz"
