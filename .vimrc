@@ -1,11 +1,33 @@
 set nocompatible
+filetype off
+
+" All vundle magic
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"
+" " let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+"
+" " The following are examples of different formats supported.
+" " Keep Plugin commands between vundle#begin/end.
+" " plugin on GitHub repo
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-surround'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'majutsushi/tagbar'
+
+" End Vundle magic
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 let mapleader=","
 let g:mapleader=","
 
 filetype plugin indent on
-
-execute pathogen#infect()
 
 set t_Co=256
 set background=dark
@@ -95,7 +117,7 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 "
 " Tagbar plugin settings
-map <leader>tb :TagbarToggle<cr>
+nmap <f8> :TagbarToggle<cr>
 map <leader>T :TagbarOpenAutoClose<cr>
 
 " cycle through tabs browser style
@@ -129,8 +151,8 @@ match OverLength /\%81v.\+/
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline=\ %{HasPaste()}[%n%M]\ %f\ [%R%H%W%Y]\ %{fugitive#statusline()}
-set statusline+=\ CWD:%<%{getcwd()}\ loc:\ %l/%L,%v
+set statusline=\ %{HasPaste()}[%n%M]\ %f\ [%R%H%W%Y]\ 
+set statusline+=CWD:%<%{getcwd()}\ loc:\ %l/%L,%v
 set statusline+=%{SyntasticStatuslineFlag()}
 
 
@@ -139,7 +161,7 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=5
 let g:syntastic_enable_signs=0
 let g:syntastic_check_on_wq=0
-let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_python_checkers = ['python']
 
 " Return to last edit postition when opening files
 autocmd BufReadPost *
