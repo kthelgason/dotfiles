@@ -6,20 +6,12 @@ IdentityFile ~/.ssh/id_rsa
 TCPKeepAlive yes
 IdentitiesOnly yes
 
-Host mintgit
-User git
-Port 22
-Hostname github.com
-IdentityFile ~/.ssh/mint_rsa
-TCPKeepAlive yes
-IdentitiesOnly yes
-
 Host skel
 User kari12
 hostname skel.ru.is
 IdentityFile ~/.ssh/id_rsa
 
-Host blogger
+Host mail0r
 User root
 hostname 37.139.29.112
 IdentityFile ~/.ssh/id_rsa
