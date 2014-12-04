@@ -19,6 +19,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'majutsushi/tagbar'
+Plugin 'bling/vim-airline'
 
 " End Vundle magic
 call vundle#end()            " required
@@ -145,16 +146,8 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 command! -nargs=* Wrap set wrap linebreak nolist
 
 " enforce 80 char row limit
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" STATUS LINE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline=\ %{HasPaste()}[%n%M]\ %f\ [%R%H%W%Y]\ 
-set statusline+=CWD:%<%{getcwd()}\ loc:\ %l/%L,%v
-set statusline+=%{SyntasticStatuslineFlag()}
-
+"highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
+"match OverLength /\%81v.\+/
 
 " Syntastic settings
 let g:syntastic_auto_loc_list=1
@@ -220,7 +213,7 @@ endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
 
 " -----------------------------------------------
-"  markdown 
+"  markdown
 "  ----------------------------------------------
 let g:vim_markdown_folding_disabled=1
 
