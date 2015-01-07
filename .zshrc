@@ -1,8 +1,8 @@
-
 for config_file ($HOME/.zsh/*); do
   source $config_file
 done
 
+zmodload -i zsh/complist
 setopt PROMPT_SUBST
 autoload -U promptinit
 promptinit
@@ -35,6 +35,9 @@ export VISUAL="vim"
 alias ta="tmux att"
 alias tl="tmux ls"
 
+# rm to trash
+alias rm="rmtrash"
+
 # General aliases
 alias update="brew update && brew upgrade"
 alias gimme="brew install"
@@ -44,7 +47,8 @@ alias finder="open . &"
 alias reload="source ~/.zshrc"
 alias ea="sudo vim ~/.zshrc && reload"
 alias tags="/usr/local/bin/tag --list `ls`"
-alias tmuxhelp="cat /etc/tmux.cheat"
+alias eip="curl icanhazip.com"
+
 
 # Python/django
 alias pyhton="python"
@@ -56,40 +60,60 @@ alias bake="python manage.py"
 # Ruby/Rails
 alias r="rails"
 
+# Completion 
+unsetopt menu_complete
+unsetopt flowcontrol
+setopt auto_menu
+setopt complete_in_word
+setopt always_to_end
+
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
 zstyle ':completion:*' use-cache on
+zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle -e ':completion:*:approximate:*' \
         max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
 
 # Terminal Options
-setopt AUTO_CD           # implicate cd for non-commands
-setopt CD_ABLE_VARS       # read vars in cd
-setopt CORRECT            # correct spelling
-setopt COMPLETE_IN_WORD       # complete commands anywhere in the word
+setopt AUTO_CD             # implicate cd for non-commands
+setopt CD_ABLE_VARS        # read vars in cd
+setopt CORRECT             # correct spelling
 setopt NOTIFY              # Notify when jobs finish
 setopt C_BASES             # 0xFF
 setopt BASH_AUTO_LIST      # Autolist options on repeition of ambiguous args
 setopt CHASE_LINKS         # Follow links in cds
 setopt AUTO_PUSHD          # Push dirs into history
-setopt ALWAYS_TO_END       # Move to the end on complete completion
 setopt LIST_ROWS_FIRST     # Row orientation for menu
 setopt MULTIOS             # Allow Multiple pipes
 setopt MAGIC_EQUAL_SUBST   # Expand inside equals
 setopt EXTENDED_GLOB
 setopt AUTO_PUSHD
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history
 
 bindkey -v
 bindkey '\e[3~' delete-char
-bindkey '^R' history-incremental-search-backward
 
 unsetopt correctall
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
+
+# History
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 
 set -o emacs
 
@@ -124,3 +148,7 @@ function play {
 }
 
 . `brew --prefix`/etc/profile.d/z.sh
+
+# OPAM configuration
+. /Users/kthelgason/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
