@@ -30,10 +30,12 @@ export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 export EDITOR="vim"
-export VISUAL="vim"
+export VISUAL="view"
 
 alias ta="tmux att"
 alias tl="tmux ls"
+
+alias latexmk="latexmk -pvc"
 
 # rm to trash
 alias rm="rmtrash"
@@ -65,20 +67,21 @@ unsetopt menu_complete
 unsetopt flowcontrol
 setopt auto_menu
 setopt complete_in_word
-setopt always_to_end
+setopt complete_aliases
 
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
-zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
-zstyle -e ':completion:*:approximate:*' \
-        max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
+zstyle ':completion:*' completer _expand _complete _match _approximate
+zstyle ':completion:*:default' list-colors ${(s.:.)LSCOLORS}
+
+autoload -U compinit
+compinit
 
 # Terminal Options
 setopt AUTO_CD             # implicate cd for non-commands
@@ -94,6 +97,8 @@ setopt MULTIOS             # Allow Multiple pipes
 setopt MAGIC_EQUAL_SUBST   # Expand inside equals
 setopt EXTENDED_GLOB
 setopt AUTO_PUSHD
+
+# History options
 setopt extended_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
@@ -101,23 +106,16 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 setopt share_history
-
-bindkey -v
-bindkey '\e[3~' delete-char
-
-unsetopt correctall
-
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[4~" end-of-line
-
-# History
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
+
+
 set -o emacs
 
 export PATH=$PATH:$HOME/bin
+export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
 
 # Source chruby script
 source /usr/local/opt/chruby/share/chruby/chruby.sh
