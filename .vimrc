@@ -20,10 +20,13 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
+Plugin 'guns/vim-clojure-static'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'jimenezrick/vimerl'
 
 " End Vundle magic
 call vundle#end()            " required
-filetype plugin indent on    " required
 
 let mapleader=","
 let g:mapleader=","
@@ -32,7 +35,7 @@ filetype plugin indent on
 
 set t_Co=256
 set background=dark
-color ir_black
+color base16-bright
 syntax on
 
 set history=10000
@@ -116,7 +119,7 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-"
+
 " Tagbar plugin settings
 nmap <f8> :TagbarToggle<cr>
 map <leader>T :TagbarOpenAutoClose<cr>
@@ -130,6 +133,7 @@ map <leader>cd :cd %:p:h<cr>
 
 " sudo write
 cmap W! w !sudo tee % >/dev/null
+cmap W w
 
 " CtrlP
 let ctrlp_map = '<c-p>'
@@ -143,11 +147,18 @@ let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " command to enable soft-wrap
-command! -nargs=* Wrap set wrap linebreak nolist
+command! -nargs=* Wrap set wrap linebreak
 
 " enforce 80 char row limit
-"highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-"match OverLength /\%81v.\+/
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+"Airline settings
+let g:airline#extensions#whitespace#checks = []
+let g:airline_section_y = airline#section#create_right(['%{printf("%s%s",&fenc,&ff!="unix"?":".&ff:"")}'])
+let g:airline_section_z = airline#section#create_right(['%3l:%2c'])
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#extensions#ctrlp#color_template = 'replace'
 
 " Syntastic settings
 let g:syntastic_auto_loc_list=1
@@ -213,15 +224,30 @@ endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
 
 " -----------------------------------------------
+"  OCaml
+"  ----------------------------------------------
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+autocmd BufEnter *.ml :color base16-tomorrow
+
+
+" -----------------------------------------------
+"  Clojure
+"  ----------------------------------------------
+au VimEnter *.clj RainbowParenthesesActivate
+au BufEnter *.clj :RainbowParenthesesLoadRound
+au BufEnter *.clj :RainbowParenthesesLoadSquare
+au BufEnter *.clj :RainbowParenthesesLoadBraces
+
+" -----------------------------------------------
 "  markdown
 "  ----------------------------------------------
 let g:vim_markdown_folding_disabled=1
 
 " -----------------------------------------------
-"  latex compilation
+"  latex
 "  ----------------------------------------------
 autocmd BufEnter *.tex :color base16-tomorrow
-autocmd BufWritePost *.tex silent !pdflatex %
 
 " -----------------------------------------------
 "  helper functions
