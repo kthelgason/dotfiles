@@ -1,78 +1,60 @@
-#! /usr/local/bin/python3
+#! /usr/local/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 
-import os
+import os, sys
 import subprocess
-from lock import FileLockException, FileLock
+from neovim import attach
+from neovim.api.nvim import NvimError
 try:
     import queue
 except ImportError:
     import Queue as queue
 import sys
 
-REVERSED = False
+OPEN = "/usr/bin/open"
+EDITOR = "/usr/local/bin/nvim"
+LISTEN_ADDR = "/tmp/nvim"
+GRADER_NAME = "Kári Tristan, kari12@ru.is"
 
-PDF_READER = "/usr/bin/open"
-EDITOR = "/usr/local/bin/mvim"
-
-def open_pdf(s):
-    pdf = list(filter(lambda n: n.endswith("pdf"), os.listdir('.')))[0]
-    if sys.platform == 'win32':
-        os.chdir('..')
-        subprocess.Popen([PDF_READER, os.path.join(s,pdf)]).wait()
-        os.chdir(s)
-    else:
-        os.popen('%s "%s"'%(PDF_READER, pdf)).read()
-
-def open_editor():
-    if sys.platform == 'win32':
-        subprocess.Popen([EDITOR, '-1-einkunn.txt']).wait()
-    else:
-        os.popen("%s -- -1-einkunn.txt" % EDITOR).read()
-
+def establish_connection():
+    try:
+        nvim = attach('socket', path=LISTEN_ADDR)
+    except Exception as e:
+        print("Make sure nvim is running and listening on the local socket /tmp/nvim.")
+        sys.exit(1)
+    return nvim
 
 def main():
     os.chdir(sys.argv[1])
     done_file = os.path.join(os.path.dirname(sys.argv[0]), 'grade_done.state')
     done = []
+    nvim = establish_connection()
     if os.path.exists(done_file):
-        f = open(done_file)
-        done = f.read().splitlines()
-        f.close()
+        with open(done_file) as f:
+            done = f.read().splitlines()
 
     path = open(done_file, 'a')
-
-
     listdir = os.listdir('.')
-    if REVERSED:
-        listdir = listdir[::-1]
     q = queue.deque([i for i in filter(os.path.isdir, listdir) if i not in done])
 
-    print(q)
-
-    lock = []
-
+    #TODO: chdir in nvim
+    # Handle path with spaces!
     while len(q) > 0:
-        print(lock)
         s = q.pop()
-
-        print('Moving to: %s'%os.getcwd())
+        print('Moving to: %s' % s)
         os.chdir(s)
-
+        nvim.command('cd %s' % s)
+        dircontents = os.listdir('.')
+        print(dircontents)
+        path.write(s + "\n")
         try:
-            with FileLock('pdf', timeout=1):
-                try:
-                    open_pdf(s)
-                except Exception as e:
-                    print(e)
-                    pass
-                open_editor()
-                path.write(s + "\n")
+            nvim.command('e %s' % os.path.normpath(os.path.join(s, dircontents[0])))
+            nvim.buffers[0].append("-%s" % GRADER_NAME)
+        except NvimError as e:
+            print(e)
 
-                q.extend(lock[::-1])
-                #Heather
-                lock.clear()
-        except FileLockException:
-            lock.append(s)
+        raw_input()
 
         os.chdir('..')
 
