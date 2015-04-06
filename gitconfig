@@ -1,5 +1,5 @@
 [user]
-	name = Kári Tristan Helgason
+	name = Kári Tristan Helgason
 	email = kthelgason@gmail.com
 [core]
 	excludesfile = /Users/kthelgason/.gitignore_global
@@ -36,5 +36,3 @@
 
 [help]
 	autocorrect = 1
-[init]
-	templatedir = /Users/kthelgason/.git-templates
