@@ -1,3 +1,4 @@
 *.pyc
 *.state
 vim/sessions
+vim/bundle/*
