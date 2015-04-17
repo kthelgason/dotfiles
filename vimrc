@@ -24,6 +24,7 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'jimenezrick/vimerl'
+Plugin 'junegunn/goyo.vim'
 
 " End Vundle magic
 call vundle#end()            " required
@@ -50,7 +51,7 @@ set wildignore+=.git/*,.hg/*,.svn/*
 set wildmode=list:full
 
 set ruler
-set cmdheight=2
+set cmdheight=1
 set guioptions-=T
 set guioptions-=L
 set guioptions-=r
@@ -226,9 +227,9 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " -----------------------------------------------
 "  OCaml
 "  ----------------------------------------------
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-autocmd BufEnter *.ml :color base16-tomorrow
+"let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+"execute "set rtp+=" . g:opamshare . "/merlin/vim"
+"autocmd BufEnter *.ml :color base16-tomorrow
 
 
 " -----------------------------------------------

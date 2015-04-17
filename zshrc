@@ -37,9 +37,6 @@ alias tl="tmux ls"
 
 alias latexmk="latexmk -pvc -interaction=nonstopmode"
 
-# rm to trash
-alias rm="rmtrash"
-
 # General aliases
 alias update="brew update && brew upgrade"
 alias gimme="brew install"
@@ -112,12 +109,6 @@ SAVEHIST=10000
 
 set -o emacs
 
-export PATH=$PATH:$HOME/bin
-export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
-
-# Source chruby script
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-
 #------------------------------------
 # functions
 #------------------------------------
@@ -147,11 +138,3 @@ function new-post {
     touch $(date +%Y-%m-%d)-$1.md
 }
 
-. `brew --prefix`/etc/profile.d/z.sh
-
-# OPAM configuration
-. /Users/kthelgason/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
