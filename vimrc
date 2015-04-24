@@ -151,8 +151,8 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 command! -nargs=* Wrap set wrap linebreak
 
 " enforce 80 char row limit
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+"highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
+"match OverLength /\%81v.\+/
 
 "Airline settings
 let g:airline#extensions#whitespace#checks = []
@@ -181,6 +181,7 @@ set pastetoggle=<F2>
 map 0 ^
 
 autocmd FileType ruby,haml,eruby,yaml,html,sass,cucumber set ai sw=2 sts=2 et
+autocmd FileType javascript,coffeescript set ai sw=2 sts=2 et
 autocmd FileType python set sw=4 sts=4 et
 map <leader>b :CtrlPBuffer<cr>
 
