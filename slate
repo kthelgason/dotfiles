@@ -12,6 +12,12 @@ bind down:cmd;ctrl     focus down
 bind up:cmd;alt   focus behind
 bind down:cmd;alt focus behind
 
+# Throw bindings
+bind 1:ctrl;alt         throw 0 resize
+bind 2:ctrl;alt         throw 1 resize
+bind h:ctrl;alt;cmd     throw left resize
+bind l:ctrl;alt;cmd     throw right resize
+
 # ======================================
 # Abstract positions
 # ======================================
