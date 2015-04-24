@@ -47,6 +47,7 @@ alias reload="source ~/.zshrc"
 alias ea="sudo vim ~/.zshrc && reload"
 alias tags="/usr/local/bin/tag --list `ls`"
 alias eip="curl icanhazip.com"
+alias fuck='$(thefuck $(fc -ln -1))'
 
 
 # Python/django
@@ -58,6 +59,9 @@ alias bake="python manage.py"
 
 # Ruby/Rails
 alias r="rails"
+
+# Node
+alias unode="ultra-repl"
 
 # Completion 
 unsetopt menu_complete
