@@ -25,6 +25,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'jimenezrick/vimerl'
 Plugin 'junegunn/goyo.vim'
+Plugin 'tpope/vim-fugitive'
 
 " End Vundle magic
 call vundle#end()            " required
@@ -154,6 +155,10 @@ command! -nargs=* Wrap set wrap linebreak
 "highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
 "match OverLength /\%81v.\+/
 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 "Airline settings
 let g:airline#extensions#whitespace#checks = []
 let g:airline_section_y = airline#section#create_right(['%{printf("%s%s",&fenc,&ff!="unix"?":".&ff:"")}'])
@@ -162,10 +167,9 @@ let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#ctrlp#color_template = 'replace'
 
 " Syntastic settings
-let g:syntastic_auto_loc_list=1
-let g:syntastic_loc_list_height=5
-let g:syntastic_enable_signs=0
-let g:syntastic_check_on_wq=0
+let g:syntastic_auto_loc_list=0
+let g:syntastic_enable_signs=1
+let g:syntastic_check_on_wq=1
 let g:syntastic_python_checkers = ['python']
 
 " Return to last edit postition when opening files
