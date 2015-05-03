@@ -38,7 +38,7 @@ filetype plugin indent on
 
 set t_Co=256
 set background=dark
-color base16-bright
+color base16-tomorrow
 syntax on
 
 set history=10000
@@ -59,7 +59,6 @@ set guioptions-=L
 set guioptions-=r
 if has("gui_running")
     set guifont=Anonymous\ Pro:h16
-    color grb256
 endif
 set ttyfast
 
