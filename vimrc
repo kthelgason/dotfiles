@@ -26,6 +26,7 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'jimenezrick/vimerl'
 Plugin 'junegunn/goyo.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'raichoo/purescript-vim'
 
 " End Vundle magic
 call vundle#end()            " required
