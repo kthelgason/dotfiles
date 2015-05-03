@@ -22,3 +22,7 @@ function git_wtf() {
 function git_remove_untracked() {
     git st | awk '{if(NR != 1) {print $2}}' | xargs rm -rf    
 }
+
+function git_untrack() {
+    git st | awk '{if(NR != 1) {print $2}}' | xargs git rm -r --cached -- 
+} 

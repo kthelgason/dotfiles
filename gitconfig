@@ -33,6 +33,7 @@
     wtf = "!source ~/dotfiles/bin/githelpers && git_wtf"
     l = "!source ~/dotfiles/bin/githelpers && pretty_git_log"
     remove-untracked = "!source ~/dotfiles/bin/githelpers && git_remove_untracked"
+    untrack-all = "!source ~/dotfiles/bin/githelpers && git_untrack"
 
 [help]
 	autocorrect = 1
