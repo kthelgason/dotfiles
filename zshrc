@@ -38,13 +38,13 @@ alias tl="tmux ls"
 alias latexmk="latexmk -pvc -interaction=nonstopmode"
 
 # General aliases
-alias update="brew update && brew upgrade"
+alias update="brew update && brew upgrade --all"
 alias gimme="brew install"
 alias v="~/.v"
 alias vi="mvim"
 alias finder="open . &"
 alias reload="source ~/.zshrc"
-alias ea="sudo vim ~/.zshrc && reload"
+alias ea="vim ~/.zshrc && reload"
 alias tags="/usr/local/bin/tag --list `ls`"
 alias eip="curl icanhazip.com"
 alias fuck='$(thefuck $(fc -ln -1))'
