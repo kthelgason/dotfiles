@@ -27,6 +27,8 @@ Plugin 'jimenezrick/vimerl'
 Plugin 'junegunn/goyo.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'raichoo/purescript-vim'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " End Vundle magic
 call vundle#end()            " required
@@ -38,7 +40,7 @@ filetype plugin indent on
 
 set t_Co=256
 set background=dark
-color base16-tomorrow
+color base16-eighties
 syntax on
 
 set history=10000
@@ -73,9 +75,6 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
-
-" split edit vimrc
-nnoremap <leader>evr <C-w><C-s><C-l>:e ~/.vimrc<CR>
 
 set expandtab
 set smarttab
@@ -116,30 +115,57 @@ map <C-l> <C-W>l
 nmap <f8> :TagbarToggle<cr>
 map <leader>T :TagbarOpenAutoClose<cr>
 
+" CtrlP
+let ctrlp_map = '<c-p>'
+let ctrlp_cmd = 'CtrlP'
+let ctrlp_working_path_mode = 'ra'
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+    let g:ctrlp_prompt_mappings = {
+        \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+    \ }
+endif
+
+" NERDTree
+map <leader>n :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$', '\.dSYM$']
+
 " cycle through tabs browser style
 map <leader><tab> :tabn<cr>
 
 " cd to current dir
 map <leader>cd :cd %:p:h<cr>
 
+" split edit vimrc
+nnoremap <leader>evr <C-w><C-s><C-l>:e ~/.vimrc<CR>
+
+" quick open new files
+nnoremap <leader>o :CtrlP<CR>
+
+" Copy & paste to system clipboard
+vmap <leader>y "+y
+vmap <leader>d "+d
+vmap <leader>p "+p
+vmap <leader>P "+P
+nmap <leader>p "+p
+nmap <leader>P "+P
+
+" jump to end on paste
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 
 " sudo write
 cmap W! w !sudo tee % >/dev/null
-cmap W w
 
-" CtrlP
-let ctrlp_map = '<c-p>'
-let ctrlp_cmd = 'CtrlP'
-let ctrlp_working_path_mode = 'ra'
-
-" NERDTree
-map <leader>n :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$', '\.dSYM$']
+" Stop that stupid window from popping up
+map q: :q
 
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" command to enable soft-wrap
-command! -nargs=* Wrap set wrap linebreak
 
 " enforce 80 char row limit
 "highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
@@ -151,7 +177,6 @@ endif
 
 "Airline settings
 let g:airline_theme='tomorrow'
-let g:airline_powerline_fonts=1
 let g:airline#extensions#whitespace#checks = []
 let g:airline_section_y = airline#section#create_right(['%{printf("%s%s",&fenc,&ff!="unix"?":".&ff:"")}'])
 let g:airline_section_z = airline#section#create_right(['%3l:%2c'])
@@ -176,7 +201,7 @@ set viminfo^=%
 set pastetoggle=<F2>
 map 0 ^
 
-autocmd FileType ruby,haml,eruby,yaml,html,sass,cucumber set ai sw=2 sts=2 et
+autocmd FileType ruby,haml,jade,eruby,yaml,html,sass,cucumber set ai sw=2 sts=2 et
 autocmd FileType javascript,coffeescript set ai sw=2 sts=2 et
 autocmd FileType python set sw=4 sts=4 et
 map <leader>b :CtrlPBuffer<cr>
@@ -245,7 +270,7 @@ let g:vim_markdown_folding_disabled=1
 " -----------------------------------------------
 "  latex
 "  ----------------------------------------------
-autocmd BufEnter *.tex :color base16-tomorrow
+"autocmd BufEnter *.tex :color base16-tomorrow
 
 " -----------------------------------------------
 "  helper functions
@@ -256,4 +281,15 @@ function! HasPaste()
     en
     return ''
 endfunction
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+    let @" = s:restore_reg
+    return ''
+endfunction
+function! s:Repl()
+    let s:restore_reg = @"
+    return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 
