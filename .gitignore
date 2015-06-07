@@ -2,3 +2,4 @@
 *.state
 vim/sessions
 vim/bundle/*
+vim/spell
