@@ -40,7 +40,7 @@ filetype plugin indent on
 
 set t_Co=256
 set background=dark
-color base16-eighties
+color jellybeans
 syntax on
 
 set history=10000
@@ -67,6 +67,7 @@ set ttyfast
 
 " Show suspicious characters
 set listchars=nbsp:¬,tab:>-,extends:»,precedes:«,trail:•
+set list
 
 " Do syntax highlighting from the start
 autocmd BufEnter * :syntax sync fromstart
@@ -204,6 +205,7 @@ map 0 ^
 autocmd FileType ruby,haml,jade,eruby,yaml,html,sass,cucumber set ai sw=2 sts=2 et
 autocmd FileType javascript,coffeescript set ai sw=2 sts=2 et
 autocmd FileType python set sw=4 sts=4 et
+
 map <leader>b :CtrlPBuffer<cr>
 
 func! DeleteTrailingWS()
@@ -246,13 +248,6 @@ function! RemoveFancyCharacters()
 endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
 
-" -----------------------------------------------
-"  OCaml
-"  ----------------------------------------------
-"let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-"execute "set rtp+=" . g:opamshare . "/merlin/vim"
-"autocmd BufEnter *.ml :color base16-tomorrow
-
 
 " -----------------------------------------------
 "  Clojure
@@ -266,11 +261,6 @@ au BufEnter *.clj :RainbowParenthesesLoadBraces
 "  markdown
 "  ----------------------------------------------
 let g:vim_markdown_folding_disabled=1
-
-" -----------------------------------------------
-"  latex
-"  ----------------------------------------------
-"autocmd BufEnter *.tex :color base16-tomorrow
 
 " -----------------------------------------------
 "  helper functions
