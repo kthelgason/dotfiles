@@ -29,6 +29,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'raichoo/purescript-vim'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'fatih/vim-go'
 
 " End Vundle magic
 call vundle#end()            " required
@@ -76,6 +77,9 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
+
+" Apparently this magic makes vim use os x clipboard
+set clipboard=unnamed
 
 set expandtab
 set smarttab
