@@ -113,6 +113,9 @@ SAVEHIST=10000
 
 set -o emacs
 
+# OPAM configuration
+. /Users/kthelgason/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
 #------------------------------------
 # functions
 #------------------------------------
