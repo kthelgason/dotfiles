@@ -1,0 +1,188 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/kthelgason/Documents/learn/clojure/sicp/" . "src/")
+ ("/Users/kthelgason/Documents/proj/instagram-slackbot/src/instagram_slackbot/" . "core/")
+ ("/Users/kthelgason/Documents/proj/instagram-slackbot/src/clj_slackbot/" . "core/")
+ ("/Users/kthelgason/Documents/proj/instagram-slackbot/src/" . "instagram_slackbot/")
+ ("/Users/kthelgason/Documents/learn/clojure/sicp/src/" . "sicp/")
+ ("/Users/kthelgason/Documents/learn/clojure/test/test-proj/src/" . "test_proj/")
+ ("/Users/kthelgason/Documents/learn/clojure/test/test-proj/" . "src/")
+ ("/Users/kthelgason/Documents/learn/clojure/test/" . "test-proj/")
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/cljs-tutorial/" . "src/")
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/" . "cljs-tutorial/")
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/cljs-tutorial/src/cljs/" . "cljs_tutorial/")
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/cljs-tutorial/src/" . "cljs/")
+ ("/Users/kthelgason/Documents/learn/cljs/" . "modern-cljs/")
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/src/cljs/" . "modern_cljs/")
+ ("/Users/kthelgason/oz/slate/" . "source/")
+ ("/Users/kthelgason/Documents/learn/clojure/command-line-args/src/" . "command_line_args/")
+ ("/Users/kthelgason/Documents/learn/clojure/command-line-args/" . "src/")
+ ("/Users/kthelgason/Documents/learn/clojure/" . "sicp/")
+ ("/Users/kthelgason/Documents/learn/" . "clojure/")
+ ("/Users/kthelgason/Documents/proj/hero/" . "src/")
+ ("/Users/kthelgason/Documents/proj/clj-slackbot/src/clj_slackbot/" . "core/")
+ ("/Users/kthelgason/Documents/proj/clj-slackbot/src/" . "clj_slackbot/")
+ ("/Users/kthelgason/Documents/proj/clj-slackbot/" . "src/")
+ ("/Users/kthelgason/Documents/proj/" . "hero/")
+ ("/Users/kthelgason/Documents/" . "learn/")
+ ("/Users/kthelgason/oz/core_z/lib/" . "routes/")
+ ("/Users/kthelgason/oz/core_z/" . "lib/")
+ ("/Users/kthelgason/oz/" . "slate/")
+ ("/Users/kthelgason/" . "Documents/")
+ ("/Users/" . "kthelgason/")
+ ("/" . "Users/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/kthelgason/"
+ "/Users/kthelgason/Documents/learn/clojure/sicp/src/sicp/"
+ "/Users/kthelgason/oz/documents/"
+ "/Users/kthelgason/Documents/proj/instagram-slackbot/src/instagram_slackbot/core/"
+ "/Users/kthelgason/Documents/proj/instagram-slackbot/"
+ "/Users/kthelgason/Documents/proj/instagram-slackbot/src/clj_slackbot/core/"
+ "/Users/kthelgason/Documents/learn/clojure/test/test-proj/src/test_proj/"
+ "/Users/kthelgason/Documents/learn/clojure/command-line-args/src/command_line_args/"
+ "/Users/kthelgason/Documents/learn/cljs/modern-cljs/cljs-tutorial/src/cljs/cljs_tutorial/"
+ "/Users/kthelgason/oz/slate/source/"
+ "/Users/kthelgason/.lein/"
+ "/Users/kthelgason/Documents/learn/clojure/command-line-args/"
+ "/Users/kthelgason/Documents/proj/hero/src/"
+ "/Users/kthelgason/oz/core_z/lib/routes/"
+ "/Users/kthelgason/Documents/proj/clj-slackbot/src/clj_slackbot/core/"
+ "/Users/kthelgason/Documents/exercism/clojure/bob/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ ".emacs"
+ "chap1.clj"
+ "sprint-31-32.org"
+ "sprint-34-35.org"
+ "instagram.clj"
+ "project.clj"
+ "handler.clj"
+ "core.clj"
+ "core.cljs"
+ "index.md"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/kthelgason/" (21983 8486 0 0) "VirtualBox VMs/" "Public/" "Pictures/" "oz/" "Music/" "Movies/" "Library/" "Dropbox/" "Downloads/" "dotfiles/" "Documents/" "Desktop/" "colors/" "bin/" ".zshrc" ".zshenv" ".zsh_history" ".zsh/" ".zprofile" ".zcompdump" ".z" ".wireshark/" ".vimrc" ".vimperatorrc" ".vimperator/" ".viminfo" ".vim/" ".v8flags.3.14.5.9.kthelgason.json" ".utop-history" ".Trash/" ".tmux.local.conf" ".tmux.conf" ".thefuck/" ".subversion/" ".ssh/" ".slate" ".sh_history" ".rubies/" ".purescript/" ".ptpython/" ".psqlrc" ".psql_history" ".pgclirc" ".pgcli.log" ".pgcli-history" ".opam/" ".ocamlinit" ".nvimrc" ".nvimlog" ".nviminfo" ".nvim/" ".npm/" ".node-gyp/" ".netrc" ".m2/" ".local/" ".lesshst" ".lein_history" ".lein/" ".latexmkrc" ".irssi/" ".inputrc" ".htoprc" ".heroku-2fa-recovery" ".heroku/" ".grunt-init/" ".github-2fa-recovery" ".gitconfig" ".ghc/" ".gem/" ".exercism.json" ".erlang.cookie" ".emacs.d/" ".emacs" ".DS_Store" ".dropbox/" ".cups/" ".config/" ".cocoapods/" ".CFUserTextEncoding" ".cache/" ".cabal/" ".bash_history" ".aws-creds" ".aws/" ".#.emacs" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/clojure/sicp/src/sicp/" (21983 4628 0 0) "core.clj" "chap1.clj" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/clojure/sicp/" (21983 4630 0 0) "test/" "target/" "src/" "resources/" "README.md" "project.clj" "LICENSE" "doc/" ".hgignore" ".gitignore" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/clojure/" (21962 32225 0 0) "sicp/" "command-line-args/" "../" "./")
+
+ ("/Users/kthelgason/oz/documents/" (21973 45321 0 0) "standup.org" "sprint-31-32.org" "pecha_cucha_notes.txt" "deployment_process.md" ".#sprint-34-35.org" "../" "./")
+
+ ("/Users/kthelgason/oz/core_z/lib/routes/" (21972 39589 0 0) "videos.js" "videos-collections.js" "users.js" "user-roles.js" "upcoming.js" "subscriptions.js" "subscriptions-zuora-callouts.js" "stream-urls.js" "social-auth.js" "slots.js" "roles.js" "payouts.js" "payout-details.js" "payments.js" "moments.js" "invitations.js" "index.js" "hashtags.js" "follows.js" "feeds.js" "contracts.js" "collections.js" "channels.js" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/instagram-slackbot/" (21971 38282 0 0) "target/" "src/" "README.md" "project.clj" "Procfile" "app.json" ".java.policy" ".gitignore" ".git/" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/instagram-slackbot/src/instagram_slackbot/core/" (21968 60625 0 0) "instagram.clj" "handler.clj" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/instagram-slackbot/src/instagram_slackbot/" (21966 29362 0 0) "core/" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/instagram-slackbot/src/" (21967 14775 0 0) "instagram_slackbot/" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/instagram-slackbot/src/clj_slackbot/core/" (21967 12810 0 0) "handler.clj" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/instagram-slackbot/src/clj_slackbot/" (21966 29362 0 0) "core/" "../" "./")
+
+ ("/Users/kthelgason/.lein/" (21962 29318 0 0) "profiles.clj" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/cljs-tutorial/src/cljs/cljs_tutorial/" (21955 59060 0 0) "core.cljs" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/clojure/command-line-args/src/command_line_args/" (21962 29524 0 0) "core.clj" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/clojure/sicp/src/" (21962 32225 0 0) "sicp/" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/clojure/test/test-proj/" (21962 29881 0 0) "test/" "target/" "src/" "resources/" "README.md" "project.clj" "LICENSE" "doc/" ".hgignore" ".gitignore" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/clojure/test/test-proj/src/test_proj/" (21962 29364 0 0) "core.clj" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/clojure/test/test-proj/src/" (21962 29364 0 0) "test_proj/" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/clojure/test/" (21962 29364 0 0) "test-proj/" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/clojure/command-line-args/" (21962 29425 0 0) "test/" "target/" "src/" "resources/" "README.md" "project.clj" "pom.xml" "LICENSE" "doc/" ".lein-repl-history" ".hgignore" ".gitignore" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/cljs-tutorial/" (21955 51425 0 0) "target/" "src/" "resources/" "README.md" "project.clj" "out/" "LICENSE" ".repl/" ".nrepl-port" ".gitignore" "../" "./")
+
+ ("/Library/" (21947 24214 0 0) "Widgets/" "WebServer/" "Video/" "User Pictures/" "Updates/" "TeX/" "SystemProfiler/" "StartupItems/" "Spotlight/" "Spelling/" "Speech/" "Security/" "Scripts/" "ScriptingAdditions/" "Screen Savers/" "Sandbox/" "Ruby/" "Receipts/" "QuickTime/" "QuickLook/" "Python/" "PrivilegedHelperTools/" "Printers/" "Preferences/" "PreferencePanes/" "Perl/" "PDF Services/" "OpenDirectory/" "Modem Scripts/" "Messages/" "Logs/" "LaunchDaemons/" "LaunchAgents/" "Keychains/" "Keyboard Layouts/" "Java/" "iTunes/" "Internet Plug-Ins/" "Input Methods/" "Image Capture/" "Graphics/" "Google/" "Frameworks/" "Fonts/" "Filesystems/" "Extensions/" "DropboxHelperTools/" "Documentation/" "DirectoryServices/" "Dictionaries/" "Developer/" "Desktop Pictures/" "CoreMediaIO/" "Contextual Menu Items/" "Compositions/" "Components/" "ColorSync/" "ColorPickers/" "Caches/" "Audio/" "Application Support/" ".localized" "../" "./")
+
+ ("/Library/Java/" (21828 46108 0 0) "JavaVirtualMachines/" "Extensions/" "../" "./")
+
+ ("/Library/Java/JavaVirtualMachines/" (21828 46108 0 0) "jdk1.8.0_45.jdk/" "../" "./")
+
+ ("/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/" (21828 46106 0 0) "Contents/" "../" "./")
+
+ ("/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/" (21800 4727 0 0) "MacOS/" "Info.plist" "Home/" "../" "./")
+
+ ("/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/" (21800 4839 0 0) "THIRDPARTYLICENSEREADME.txt" "THIRDPARTYLICENSEREADME-JAVAFX.txt" "src.zip" "release" "README.html" "man/" "LICENSE" "lib/" "jre/" "javafx-src.zip" "include/" "db/" "COPYRIGHT" "bin/" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/cljs-tutorial/src/cljs/" (21955 50935 0 0) "cljs_tutorial/" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/cljs-tutorial/src/" (21955 50935 0 0) "cljs/" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/" (21955 50897 0 0) "ocaml/" "clojure/" "cljs/" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/cljs/" (21955 50929 0 0) "modern-cljs/" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/src/cljs/modern_cljs/" (21955 50935 0 0) "shopping.cljs" "login.cljs" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/src/cljs/" (21955 50935 0 0) "modern_cljs/" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/src/" (21955 50935 0 0) "cljs/" "clj/" "brepl/" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/cljs/modern-cljs/" (21955 50935 0 0) "test/" "src/" "resources/" "README.md" "project.clj" "doc/" "cljs-tutorial/" ".gitignore" ".git/" "../" "./")
+
+ ("/Users/kthelgason/oz/slate/source/" (21942 22217 0 0) "stylesheets/" "layouts/" "javascripts/" "index.md" "includes/" "images/" "fonts/" "../" "./")
+
+ ("/Users/kthelgason/oz/slate/" (21942 21097 0 0) "source/" "README.md" "Rakefile" "LICENSE" "Gemfile.lock" "Gemfile" "font-selection.json" "Dockerfile" "CONTRIBUTING.md" "config.rb" "CHANGELOG.md" ".travis.yml" ".gitignore" ".git/" "../" "./")
+
+ ("/Users/kthelgason/oz/" (21942 20160 0 0) "worker_z/" "webhook-router/" "slate/" "sequelize/" "scripts/" "playlist_z/" "oz-tools/" "npm-debug.log" "ingest_z/" "express-sequelize-restbuddy/" "documents/" "data_analysis/" "creator_www/" "creator_dev_www/" "core_z/" "client_ios/" "channel_www/" ".DS_Store" "../" "./")
+
+ ("/Users/kthelgason/Documents/exercism/clojure/bob/" (21917 15347 0 0) "target/" "README.md" "project.clj" "bob_test.clj" "bob.clj" ".lein-repl-history" ".lein-failures" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/clj-slackbot/src/clj_slackbot/core/" (21941 6003 0 0) "handler.clj" "../" "./")
+
+ ("/Users/kthelgason/Documents/learn/clojure/command-line-args/src/" (21941 6090 0 0) "command_line_args/" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/hero/src/" (21876 45794 0 0) "cljs/" "clj/" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/hero/" (21876 48880 0 0) "target/" "src/" "resources/" "project.clj" "figwheel_server.log" ".lein-repl-history" ".gitignore" "../" "./")
+
+ ("/Users/kthelgason/oz/core_z/" (21938 23445 0 0) "workers/" "test/" "script/" "README.md" "Procfile" "package.json" "node_modules/" "newrelic.js" "migrations/" "lib/" "Gulpfile.js" "fixtures/" "environments/" "bin/" "app.json" "apiary.apib" ".travis.yml" ".npmrc" ".npmignore" ".jshintrc" ".jscsrc" ".gitignore" ".git/" ".editorconfig" ".coveralls.yml" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/clj-slackbot/src/clj_slackbot/" (21827 34906 0 0) "core/" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/clj-slackbot/src/" (21827 34906 0 0) "clj_slackbot/" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/clj-slackbot/" (21828 62655 0 0) "test/" "src/" "README.md" "project.clj" "Procfile" "app.json" ".java.policy" ".gitignore" ".git/" "../" "./")
+
+ ("/Users/kthelgason/Documents/proj/" (21889 33256 0 0) "schelling-model/" "iterm2-borderless/" "hero/" "HCYoutubeParser/" "faster/" "clj-slackbot/" "blog/" "../" "./")
+
+ ("/Users/kthelgason/Documents/" (21925 35232 0 0) "school/" "proj/" "play/" "learn/" "exercism/" ".localized" "../" "./")
+
+ ("/Users/kthelgason/oz/core_z/lib/" (21919 57890 0 0) "stream/" "routes/" "repositories/" "models/" "middlewares/" "common/" "app.js" "../" "./")
+
+ ("/Users/kthelgason/.emacs.d/" (21909 52841 0 0) "ido.last" "elpa/" "colors/" "auto-save-list/" "../" "./")
+
+ ("/Users/kthelgason/Desktop/" (21908 25315 0 0) "Screen Shot 2015-07-01 at 22.00.00.png" "Screen Shot 2015-07-01 at 09.52.44.png" "Screen Shot 2015-06-28 at 11.56.30.png" ".localized" ".DS_Store" "../" "./")
+
+ ("/Users/" (21787 47721 0 0) "Shared/" "kthelgason/" "Guest/" ".localized" "../" "./")
+
+ ("/Users/kthelgason/Documents/exercism/" (21909 51927 0 0) "swift/" "scheme/" "scala/" "rust/" "ruby/" "python/" "plsql/" "php/" "perl5/" "ocaml/" "objective-c/" "lua/" "lisp/" "javascript/" "java/" "haskell/" "go/" "fsharp/" "erlang/" "elixir/" "csharp/" "cpp/" "coffeescript/" "clojure/" "../" "./")
+
+ ("/Users/kthelgason/Documents/exercism/clojure/" (21909 51927 0 0) "bob/" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
