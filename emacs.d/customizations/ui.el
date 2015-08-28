@@ -1,3 +1,4 @@
+
 ;; Turn off the menu bar at the top of each frame because it's distracting
 (menu-bar-mode -1)
 
@@ -17,9 +18,9 @@
 ;; for a more technical explanation.
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/themes")
-(load-theme 'tomorrow-night-bright t)
+(load-theme 'tomorrow-night t)
 
-(set-face-attribute 'default nil :font "Anonymous Pro:h16")
+(set-face-attribute 'default nil :font "Anonymous Pro:h16" :height 140)
 
 (setq ;; makes killing/yanking interact with the clipboard
       x-select-enable-clipboard t
