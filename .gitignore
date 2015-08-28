@@ -3,3 +3,9 @@
 vim/sessions
 vim/bundle/*
 vim/spell
+emacs.d/elpa/*
+emacs.d/.recentf
+emacs.d/.smex-items
+emacs.d/places
+emacs.d/cider-history
+emacs.d/projectile-bookmarks.eld
