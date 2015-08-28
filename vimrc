@@ -61,8 +61,9 @@ set guioptions-=T
 set guioptions-=L
 set guioptions-=r
 if has("gui_running")
-    set guifont=Anonymous\ Pro:h16
+    set guifont=Anonymice\ Powerline:h16
     set fuoptions=maxvert,maxhorz
+    let g:airline_powerline_fonts=1
 endif
 set ttyfast
 
@@ -181,12 +182,9 @@ if executable('ag')
 endif
 
 "Airline settings
-let g:airline_theme='tomorrow'
-let g:airline#extensions#whitespace#checks = []
+let g:airline#extensions#ctrlp#color_template = 'replace'
 let g:airline_section_y = airline#section#create_right(['%{printf("%s%s",&fenc,&ff!="unix"?":".&ff:"")}'])
 let g:airline_section_z = airline#section#create_right(['%3l:%2c'])
-let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline#extensions#ctrlp#color_template = 'replace'
 
 " Syntastic settings
 let g:syntastic_auto_loc_list=0
