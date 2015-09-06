@@ -48,6 +48,7 @@ alias ea="vim ~/.zshrc && reload"
 alias tags="/usr/local/bin/tag --list `ls`"
 alias eip="curl icanhazip.com"
 alias fuck='$(thefuck $(fc -ln -1))'
+alias getarch="ssh -p 3022 localhost"
 
 
 # Python/django
@@ -61,7 +62,8 @@ alias bake="python manage.py"
 alias r="rails"
 
 # Node
-alias unode="ultra-repl"
+alias mka="nf run mocha --env /Users/kthelgason/oz/core_z/environments/test.env"
+
 
 # Completion 
 unsetopt menu_complete
@@ -157,4 +159,15 @@ function fancy-ctrl-z {
 
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+# Vim client-server helpers
+
+export VI_SERVER="VIM"
+
+function es {
+    mvim --servername $VI_SERVER --remote-silent-tab $*
+}
+
+compdef _vim es
+
 
