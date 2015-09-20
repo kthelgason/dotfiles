@@ -42,6 +42,7 @@ alias update="brew update && brew upgrade --all"
 alias gimme="brew install"
 alias v="~/.v"
 alias vi="mvim"
+alias v="view"
 alias finder="open . &"
 alias reload="source ~/.zshrc"
 alias ea="vim ~/.zshrc && reload"
@@ -49,7 +50,8 @@ alias tags="/usr/local/bin/tag --list `ls`"
 alias eip="curl icanhazip.com"
 alias fuck='$(thefuck $(fc -ln -1))'
 alias getarch="ssh -p 3022 localhost"
-
+alias plog="tail /usr/local/var/log/privoxy/logfile"
+alias findpid="ps aux | selecta | awk '{print \$2}'"
 
 # Python/django
 alias pyhton="python"
@@ -62,10 +64,10 @@ alias bake="python manage.py"
 alias r="rails"
 
 # Node
-alias mka="nf run mocha --env /Users/kthelgason/oz/core_z/environments/test.env"
+alias mka="foreman run -e /Users/kthelgason/oz/core_z/environments/test.env mocha"
 
 
-# Completion 
+# Completion
 unsetopt menu_complete
 unsetopt flowcontrol
 setopt auto_menu
@@ -92,7 +94,7 @@ setopt CD_ABLE_VARS        # read vars in cd
 setopt CORRECT             # correct spelling
 setopt NOTIFY              # Notify when jobs finish
 setopt C_BASES             # 0xFF
-setopt BASH_AUTO_LIST      # Autolist options on repeition of ambiguous args
+setopt BASH_AUTO_LIST      # Autolist options on repetion of ambiguous args
 setopt CHASE_LINKS         # Follow links in cds
 setopt AUTO_PUSHD          # Push dirs into history
 setopt LIST_ROWS_FIRST     # Row orientation for menu
@@ -124,6 +126,14 @@ set -o emacs
 function take {
     mkdir $1
     cd $1
+}
+
+function cdf {
+    cd *$1*/
+}
+
+function lack {
+    ag --group --color $* | less -r +k
 }
 
 function agn {
@@ -162,12 +172,34 @@ bindkey '^Z' fancy-ctrl-z
 
 # Vim client-server helpers
 
-export VI_SERVER="VIM"
+VI_SERVER="VIM"
 
-function es {
+function vs {
     mvim --servername $VI_SERVER --remote-silent-tab $*
 }
 
-compdef _vim es
+# Use zsh vim completion for vs
+compdef _vim vs
 
+function sure {
+    number=$RANDOM
+    let "number %= 10"
+    mpv $HOME/Music/RA2/Allied\ Move\ \($number\).wav &> /dev/null
+}
+
+function insert-selecta-path-in-command-line() {
+    local selected_path
+    # Print a newline or we'll clobber the old prompt.
+    echo
+    # Find the path; abort if the user doesn't select anything.
+    selected_path=$(find * -type f | selecta) || return
+    # Append the selection to the current command buffer.
+    eval 'LBUFFER="$LBUFFER$selected_path "'
+    # Redraw the prompt since Selecta has drawn several new lines of text.
+    zle reset-prompt
+}
+
+# Create the zle widget
+zle -N insert-selecta-path-in-command-line
+bindkey "^S" "insert-selecta-path-in-command-line"
 
