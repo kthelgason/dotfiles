@@ -29,7 +29,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'raichoo/purescript-vim'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'fatih/vim-go'
+Plugin 'leafgarland/typescript-vim'
 
 " End Vundle magic
 call vundle#end()            " required
@@ -217,6 +217,7 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
+autocmd BufWrite *.js :call DeleteTrailingWS()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE
