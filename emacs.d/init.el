@@ -103,4 +103,4 @@
 
 ;; Langauage-specific
 (load "setup-clojure.el")
-(load "setup-js.el")q
+(load "setup-js.el")
