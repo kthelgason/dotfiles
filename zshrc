@@ -50,7 +50,7 @@ alias tags="/usr/local/bin/tag --list `ls`"
 alias eip="curl icanhazip.com"
 alias fuck='$(thefuck $(fc -ln -1))'
 alias getarch="ssh -p 3022 localhost"
-alias plog="tail /usr/local/var/log/privoxy/logfile"
+alias plog="tail $PRIVOXY_LOG"
 alias findpid="ps aux | selecta | awk '{print \$2}'"
 
 # Python/django

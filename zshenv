@@ -12,3 +12,5 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 # OPAM configuration
 #. /Users/kthelgason/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+# Privoxy log
+export PRIVOXY_LOG="/usr/local/var/log/privoxy/logfile"
