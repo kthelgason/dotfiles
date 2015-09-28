@@ -8,5 +8,7 @@ emacs.d/.recentf
 emacs.d/.smex-items
 emacs.d/places
 emacs.d/cider-history
+emacs.d/ido.last
 emacs.d/projectile-bookmarks.eld
 emacs.d/backups/
+zsh/cache
