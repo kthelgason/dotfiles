@@ -12,7 +12,6 @@
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
 
-
 ;; Highlights matching parenthesis
 (show-paren-mode 1)
 
@@ -67,3 +66,7 @@
     (quit nil)))
 
 (setq electric-indent-mode nil)
+
+;; highlight trailing whitespace
+(set-default 'show-trailing-whitespace t)
+

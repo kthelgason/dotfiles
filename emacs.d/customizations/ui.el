@@ -20,7 +20,8 @@
 (add-to-list 'load-path "~/.emacs.d/themes")
 (load-theme 'tomorrow-night t)
 
-(set-face-attribute 'default nil :font "Anonymous Pro:h16" :height 140)
+(set-face-attribute 'default nil :font "Source Code Pro:h16" :height 140)
+(set-face-attribute 'linum nil :foreground "#969896")
 
 (setq ;; makes killing/yanking interact with the clipboard
       x-select-enable-clipboard t
