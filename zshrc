@@ -52,6 +52,7 @@ alias fuck='$(thefuck $(fc -ln -1))'
 alias getarch="ssh -p 3022 localhost"
 alias plog="tail $PRIVOXY_LOG"
 alias findpid="ps aux | selecta | awk '{print \$2}'"
+alias diff="colordiff -u"
 
 # Python/django
 alias pyhton="python"
