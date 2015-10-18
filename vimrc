@@ -165,6 +165,9 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
+" Disable stupid lower-case selection key
+vnoremap u <nop>
+
 " sudo write
 cmap W! w !sudo tee % >/dev/null
 
