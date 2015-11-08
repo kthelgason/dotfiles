@@ -70,3 +70,5 @@
 ;; highlight trailing whitespace
 (set-default 'show-trailing-whitespace t)
 
+(evil-mode)
+

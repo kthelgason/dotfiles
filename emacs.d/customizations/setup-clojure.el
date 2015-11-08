@@ -83,9 +83,3 @@
      (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
 
-(eval-after-load 'paredit
-  '(progn
-     (define-key paredit-mode-map (kbd "<next>") 'paredit-forward-slurp-sexp)
-     (define-key paredit-mode-map (kbd "<home") 'paredit-backward-slurp-sexp)
-     (define-key paredit-mode-map (kbd "<end") 'paredit-backward-barf-sexp)
-     (define-key paredit-mode-map (kbd "<prior>") 'paredit-forward-barf-sexp)))

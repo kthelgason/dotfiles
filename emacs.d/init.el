@@ -4,32 +4,16 @@
 
 ;; Define package repositories
 (require 'package)
-;(add-to-list 'package-archives
-             ;'("marmalade" . "http://marmalade-repo.org/packages/") t)
-;(add-to-list 'package-archives
-             ;'("tromey" . "http://tromey.com/elpa/") t)
-;(add-to-list 'package-archives
-             ;'("melpa" . "http://melpa.milkbox.net/packages/") t)
-
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
 
-;; Load and activate emacs packages. Do this first so that the
-;; packages are loaded before you start trying to modify them.
-;; This also sets the load path.
 (package-initialize)
 
-;; Download the ELPA archive description if needed.
-;; This informs Emacs about the latest versions of all packages, and
-;; makes them available for download.
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; The packages you want installed. You can also install these
-;; manually with M-x package-install
-;; Add in your own as you wish:
 (defvar my-packages
   '(paredit
     clojure-mode
@@ -40,6 +24,9 @@
     projectile
     rainbow-delimiters
     tagedit
+    markdown-mode+
+    ggtags
+    diminish
     magit))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -57,20 +44,23 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-
-;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
-;; to load them.
-;;
-;; For example, if you download yaml-mode.el to ~/.emacs.d/vendor,
-;; then you can add the following code to this file:
-;;
-;; (require 'yaml-mode)
-;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-;;
-;; Adding this code will make Emacs enter yaml mode whenever you open
-;; a .yml file
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
+;; Diminish minor modes
+(require 'diminish)
+(when (require 'diminish nil 'noerror)
+  (eval-after-load "highlight-parentheses"
+    '(diminish 'highlight-parentheses-mode))
+  (eval-after-load "undo-tree"
+    '(diminish 'undo-tree-mode))
+  (eval-after-load "cider"
+    '(diminish 'cider-mode "C"))
+  (eval-after-load "eldoc"
+    '(diminish 'eldoc-mode))
+  (eval-after-load "paredit"
+    '(diminish 'paredit-mode "PE"))
+  (eval-after-load "projectile"
+    '(diminish 'projectile-mode)))
 
 ;;;;
 ;; Customization
@@ -79,6 +69,7 @@
 ;; Add a directory to our load path so that when you `load` things
 ;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
+(require 'keybindings)
 
 ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; environment variables
@@ -104,3 +95,5 @@
 ;; Langauage-specific
 (load "setup-clojure.el")
 (load "setup-js.el")
+(load "setup-latex.el")
+(load "setup-c.el")
