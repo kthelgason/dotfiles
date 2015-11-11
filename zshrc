@@ -53,6 +53,7 @@ alias getarch="ssh -p 3022 localhost"
 alias plog="cat $PRIVOXY_LOG"
 alias findpid="ps aux | selecta | awk '{print \$2}'"
 alias diff="colordiff -u"
+alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 # Python/django
 alias pyhton="python"
