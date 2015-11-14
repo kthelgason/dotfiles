@@ -11,8 +11,11 @@
 
 (package-initialize)
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
 
 (defvar my-packages
   '(paredit
@@ -25,6 +28,7 @@
     rainbow-delimiters
     tagedit
     markdown-mode+
+    flycheck
     ggtags
     diminish
     magit))
@@ -70,6 +74,7 @@
 ;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
 (require 'keybindings)
+(require 'setup-flycheck)
 
 ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; environment variables
