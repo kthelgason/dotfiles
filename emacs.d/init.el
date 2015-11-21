@@ -21,6 +21,7 @@
   '(paredit
     clojure-mode
     clojure-mode-extra-font-locking
+    elm-mode
     cider
     ido-ubiquitous
     smex
@@ -76,6 +77,9 @@
 (require 'keybindings)
 (require 'setup-flycheck)
 
+(use-package elm-mode
+  :ensure t)
+
 ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; environment variables
 (load "shell-integration.el")
@@ -102,3 +106,6 @@
 (load "setup-js.el")
 (load "setup-latex.el")
 (load "setup-c.el")
+
+(provide 'init)
+;;; init.el ends here
