@@ -30,6 +30,7 @@ Plugin 'raichoo/purescript-vim'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'lambdatoast/elm.vim'
 
 " End Vundle magic
 call vundle#end()            " required
