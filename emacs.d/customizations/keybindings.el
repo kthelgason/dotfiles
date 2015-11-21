@@ -1,3 +1,7 @@
+;;; package --- keybindings
+;;; Commentary:
+
+;;; Code:
 (require 'evil)
 
 (define-key evil-insert-state-map "\C-e" nil)
@@ -51,3 +55,4 @@
 (global-set-key "\C-w" 'evil-window-map)
 
 (provide 'keybindings)
+
