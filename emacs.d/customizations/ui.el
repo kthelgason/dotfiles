@@ -4,6 +4,7 @@
 
 ;; Show line numbers
 (global-linum-mode)
+(setq linum-format "%4d \u2502 ")
 
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
@@ -21,7 +22,7 @@
 (load-theme 'tomorrow-night t)
 
 (set-face-attribute 'default nil :font "Source Code Pro:h16" :height 140)
-(set-face-attribute 'linum nil :foreground "#969896")
+(set-face-attribute 'linum nil :foreground "#969896" :slant 'normal)
 
 (setq ;; makes killing/yanking interact with the clipboard
       x-select-enable-clipboard t
@@ -53,3 +54,7 @@
 
 ;; no bell
 (setq ring-bell-function 'ignore)
+
+;; highlight colum 80
+;; (require 'column-marker)
+;; (column-marker-1 80)

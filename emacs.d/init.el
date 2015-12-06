@@ -25,6 +25,7 @@
     cider
     ido-ubiquitous
     smex
+    column-marker
     projectile
     rainbow-delimiters
     tagedit
