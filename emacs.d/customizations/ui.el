@@ -4,7 +4,7 @@
 
 ;; Show line numbers
 (global-linum-mode)
-(setq linum-format "%4d \u2502 ")
+(setq linum-format "%4d \u2502")
 
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
@@ -17,9 +17,7 @@
 ;; for a great explanation of emacs color themes.
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Custom-Themes.html
 ;; for a more technical explanation.
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'load-path "~/.emacs.d/themes")
-(load-theme 'tomorrow-night t)
+(load-theme 'spacemacs-dark t)
 
 (set-face-attribute 'default nil :font "Source Code Pro:h16" :height 140)
 (set-face-attribute 'linum nil :foreground "#969896" :slant 'normal)

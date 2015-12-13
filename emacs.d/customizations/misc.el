@@ -8,5 +8,21 @@
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
 
-;; Go straight to scratch buffer on startup
-(setq inhibit-startup-message t)
+(setq inhibit-startup-message   t
+      use-dialog-box nil
+      gc-cons-threshold 20000000
+      ns-pop-up-frames nil
+      search-highlight           t
+      query-replace-highlight    t
+      read-file-name-completion-ignore-case t
+      next-line-add-newlines t
+      read-buffer-completion-ignore-case t
+      completion-auto-help 'lazy
+      isearch-allow-scroll t
+      visible-bell nil
+      sentence-end-double-space nil
+      shift-select-mode nil
+      mouse-yank-at-point t
+      uniquify-buffer-name-style 'post-forward
+      uniquify-ignore-buffers-re "^\\*")
+

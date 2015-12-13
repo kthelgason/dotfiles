@@ -25,6 +25,7 @@
     cider
     ido-ubiquitous
     smex
+    js2-mode
     column-marker
     projectile
     rainbow-delimiters
@@ -34,6 +35,9 @@
     ggtags
     diminish
     magit))
+
+(defvar my-themes
+  '(spacemacs-theme))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -46,7 +50,7 @@
 (if (eq system-type 'darwin)
     (add-to-list 'my-packages 'exec-path-from-shell))
 
-(dolist (p my-packages)
+(dolist (p (append my-packages my-themes))
   (when (not (package-installed-p p))
     (package-install p)))
 
@@ -77,6 +81,7 @@
 (add-to-list 'load-path "~/.emacs.d/customizations")
 (require 'keybindings)
 (require 'setup-flycheck)
+(require 'setup-js)
 
 (use-package elm-mode
   :ensure t)
@@ -104,7 +109,6 @@
 
 ;; Langauage-specific
 (load "setup-clojure.el")
-(load "setup-js.el")
 (load "setup-latex.el")
 (load "setup-c.el")
 
