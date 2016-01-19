@@ -82,6 +82,14 @@
 (require 'keybindings)
 (require 'setup-flycheck)
 (require 'setup-js)
+(require 'setup-ocaml)
+
+(add-to-list 'load-path "~/.emacs.d/vendor")
+(require 'chruby)
+(require 'testacular)
+
+;; Set ruby version
+(chruby "ruby-2.1.3")
 
 (use-package elm-mode
   :ensure t)
