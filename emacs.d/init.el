@@ -25,6 +25,8 @@
     cider
     ido-ubiquitous
     smex
+    tuareg
+    utop
     js2-mode
     column-marker
     projectile
@@ -37,7 +39,8 @@
     magit))
 
 (defvar my-themes
-  '(spacemacs-theme))
+  '(spacemacs-theme
+    base16-theme))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -56,6 +59,10 @@
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
+;; Put customize code somewhere else
+(setq custom-file "~/.emacs.d/emacs-customize.el")
+(load custom-file)
+
 ;; Diminish minor modes
 (require 'diminish)
 (when (require 'diminish nil 'noerror)
@@ -64,13 +71,16 @@
   (eval-after-load "undo-tree"
     '(diminish 'undo-tree-mode))
   (eval-after-load "cider"
-    '(diminish 'cider-mode "C"))
+    '(diminish 'cider-mode "()"))
   (eval-after-load "eldoc"
     '(diminish 'eldoc-mode))
   (eval-after-load "paredit"
     '(diminish 'paredit-mode "PE"))
+  (eval-after-load "subword"
+    '(diminish 'subword-mode))
   (eval-after-load "projectile"
     '(diminish 'projectile-mode)))
+
 
 ;;;;
 ;; Customization
@@ -86,7 +96,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (require 'chruby)
-(require 'testacular)
 
 ;; Set ruby version
 (chruby "ruby-2.1.3")
@@ -122,3 +131,10 @@
 
 (provide 'init)
 ;;; init.el ends here
+
+
+
+
+
+
+
