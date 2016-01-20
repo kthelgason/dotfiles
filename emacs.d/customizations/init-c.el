@@ -29,10 +29,10 @@
 
 (add-hook 'c++-mode-hook 'my-c++-mode-setup)
 
-(after 'evil
-       (evil-define-key 'insert c-mode-map (kbd "TAB") 'c-indent-line-or-region)
-       (evil-define-key 'insert c-mode-map (kbd "<backspace>") 'backward-delete-char-untabify)
-       (evil-define-key 'normal c++-mode-map (kbd "s-r") 'sigsegv/compile-and-run)
-       (evil-define-key 'insert c++-mode-map (kbd "<backspace>") 'backward-delete-char-untabify))
+(after-load 'evil
+  (evil-define-key 'insert c-mode-map (kbd "TAB") 'c-indent-line-or-region)
+  (evil-define-key 'insert c-mode-map (kbd "<backspace>") 'backward-delete-char-untabify)
+  (evil-define-key 'normal c++-mode-map (kbd "s-r") 'sigsegv/compile-and-run)
+  (evil-define-key 'insert c++-mode-map (kbd "<backspace>") 'backward-delete-char-untabify))
 
 (provide 'init-c)
