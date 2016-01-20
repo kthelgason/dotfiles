@@ -1,136 +1,66 @@
-;;;;
-;; Packages
-;;;;
 
-;; Define package repositories
-(require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
+;; Init.el
+(add-to-list 'load-path "~/.emacs.d/customizations")
+(require 'init-benchmarking) ;; Measure startup time
+(setq gc-cons-threshold (* 128 1024 1024))
 
+(require 'init-utils)
+(require 'init-package)
+(require 'init-exec-path)
+(require 'init-functions)
 
-(package-initialize)
+(require-package 'scratch)
+(require-package 'diminish)
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+(require 'init-evil)
+(require 'init-frame-hooks)
+(require 'init-theme)
+(require 'init-keys)
+(require 'init-gui-frames)
+(require 'init-dired)
+(require 'init-isearch)
+(require 'init-grep)
+(require 'init-ibuffer)
+(require 'init-flycheck)
+(require 'init-ido)
+(require 'init-windows)
+(require 'init-sessions)
+(require 'init-fonts)
+(require 'init-editing)
+(require 'init-fci)
+(require 'init-git)
+(require 'init-paredit)
 
-(require 'use-package)
+(require 'init-c)
+(require 'init-compile)
+(require 'init-markdown)
+(require 'init-javascript)
+(require 'init-web)
+(require 'init-lisp)
+(require 'init-clojure)
+(require 'init-ocaml)
 
-(defvar my-packages
-  '(paredit
-    clojure-mode
-    clojure-mode-extra-font-locking
-    elm-mode
-    cider
-    ido-ubiquitous
-    smex
-    tuareg
-    utop
-    js2-mode
-    column-marker
-    projectile
-    rainbow-delimiters
-    tagedit
-    markdown-mode+
-    flycheck
-    ggtags
-    diminish
-    magit))
+(require 'init-misc)
 
-(defvar my-themes
-  '(spacemacs-theme
-    base16-theme))
-
-;; On OS X, an Emacs instance started from the graphical user
-;; interface will have a different environment than a shell in a
-;; terminal window, because OS X does not run a shell during the
-;; login. Obviously this will lead to unexpected results when
-;; calling external utilities like make from Emacs.
-;; This library works around this problem by copying important
-;; environment variables from the user's shell.
-;; https://github.com/purcell/exec-path-from-shell
-(if (eq system-type 'darwin)
-    (add-to-list 'my-packages 'exec-path-from-shell))
-
-(dolist (p (append my-packages my-themes))
-  (when (not (package-installed-p p))
-    (package-install p)))
-
-(add-to-list 'load-path "~/.emacs.d/vendor")
+;;----------------------------------------------------------------------------
+;; Allow access from emacsclient
+;;----------------------------------------------------------------------------
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 ;; Put customize code somewhere else
 (setq custom-file "~/.emacs.d/emacs-customize.el")
 (load custom-file)
 
-;; Diminish minor modes
-(require 'diminish)
-(when (require 'diminish nil 'noerror)
-  (eval-after-load "highlight-parentheses"
-    '(diminish 'highlight-parentheses-mode))
-  (eval-after-load "undo-tree"
-    '(diminish 'undo-tree-mode))
-  (eval-after-load "cider"
-    '(diminish 'cider-mode "()"))
-  (eval-after-load "eldoc"
-    '(diminish 'eldoc-mode))
-  (eval-after-load "paredit"
-    '(diminish 'paredit-mode "PE"))
-  (eval-after-load "subword"
-    '(diminish 'subword-mode))
-  (eval-after-load "projectile"
-    '(diminish 'projectile-mode)))
-
-
-;;;;
-;; Customization
-;;;;
-
-;; Add a directory to our load path so that when you `load` things
-;; below, Emacs knows where to look for the corresponding file.
-(add-to-list 'load-path "~/.emacs.d/customizations")
-(require 'keybindings)
-(require 'setup-flycheck)
-(require 'setup-js)
-(require 'setup-ocaml)
-
-(add-to-list 'load-path "~/.emacs.d/vendor")
-(require 'chruby)
-
-;; Set ruby version
-(chruby "ruby-2.1.3")
-
-(use-package elm-mode
-  :ensure t)
-
-;; Sets up exec-path-from-shell so that Emacs will use the correct
-;; environment variables
-(load "shell-integration.el")
-
-;; These customizations make it easier for you to navigate files,
-;; switch buffers, and choose options from the minibuffer.
-(load "navigation.el")
-
-;; These customizations change the way emacs looks and disable/enable
-;; some user interface elements
-(load "ui.el")
-
-;; These customizations make editing a bit nicer.
-(load "editing.el")
-
-;; Hard-to-categorize customizations
-(load "misc.el")
-
-;; For editing lisps
-(load "elisp-editing.el")
-
-;; Langauage-specific
-(load "setup-clojure.el")
-(load "setup-latex.el")
-(load "setup-c.el")
+(add-hook 'after-init-hook
+          (lambda ()
+            (message "init completed in %.2fms"
+                     (sanityinc/time-subtract-millis after-init-time before-init-time))))
 
 (provide 'init)
 ;;; init.el ends here
+
 
 
 

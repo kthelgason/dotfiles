@@ -1,3 +1,5 @@
+(require-package 'tuareg)
+(require-package 'utop)
 (require 'tuareg)
 (require 'utop)
 
@@ -9,10 +11,10 @@
 (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
 
 (setq ocamlbuild-command
-  (concat "ocamlbuild -use-ocamlfind"
-          " -pkgs sexplib.syntax,sexplib,core"
-          " -tags thread,principal"
-          " -syntax camlp4o "))
+      (concat "ocamlbuild -use-ocamlfind"
+              " -pkgs sexplib.syntax,sexplib,core"
+              " -tags thread,principal"
+              " -syntax camlp4o "))
 
 (defun corebuild (buffer)
   (interactive (list (buffer-name)))
@@ -22,5 +24,4 @@
 
 (define-key tuareg-mode-map (kbd "C-c C-c") 'corebuild)
 
-(provide 'setup-ocaml)
-
+(provide 'init-ocaml)
