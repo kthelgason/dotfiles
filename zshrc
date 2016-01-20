@@ -54,6 +54,9 @@ alias plog="cat $PRIVOXY_LOG"
 alias findpid="ps aux | selecta | awk '{print \$2}'"
 alias diff="colordiff -u"
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias em="/Applications/Emacs.app/Contents/MacOS/Emacs"
+alias e='emacsclient -t'
+alias ec='emacsclient -c'
 
 # Python/django
 alias pyhton="python"
