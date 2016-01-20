@@ -128,6 +128,12 @@ of the current visual line and point."
                               (point))))
     (- old-point bovl)))
 
+(defun sigsegv/is-this-line-empty ()
+  "Returns t if the current line is empty. Otherwise nil."
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (looking-at "^[ \t]*$")))
 
 (defun sigsegv/current-line-is-empty ()
   "Returns t when the current line is empty or contains only whitespace."

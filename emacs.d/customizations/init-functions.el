@@ -18,6 +18,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                            (buffer-substring (region-beginning) (region-end))
                          (read-string "Search Google: "))))))
 
+(global-set-key (kbd "C-x C-g") 'sigsegv/google)
+
 (defun sigsegv/eval-and-replace ()
   "Replace the preceding sexp with its value."
   (interactive)
