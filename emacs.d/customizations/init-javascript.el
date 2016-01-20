@@ -16,6 +16,8 @@
                 js2-mode-show-strict-warnings nil)
   (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
 
+  (after-load 'evil
+    (setq evil-shift-width 2))
   (after-load 'js2-mode
     (js2-imenu-extras-setup)))
 
@@ -44,7 +46,8 @@
     nil " InfJS" inferior-js-minor-mode-map)
 
   (dolist (hook '(js2-mode-hook js-mode-hook))
-    (add-hook hook 'inferior-js-keys-mode)))
+    (add-hook hook 'inferior-js-keys-mode))
+  (diminish 'inferior-js-keys-mode))
 
 (provide 'init-javascript)
 

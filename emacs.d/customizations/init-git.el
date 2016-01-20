@@ -22,6 +22,9 @@
   (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up)
   (add-hook 'magit-popup-mode-hook 'sanityinc/no-trailing-whitespace))
 
+(require-package 'evil-magit)
+(require 'evil-magit)
+
 (require-package 'fullframe)
 (after-load 'magit
   (fullframe magit-status magit-mode-quit-window))
