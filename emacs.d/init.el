@@ -30,6 +30,7 @@
 (require 'init-fci)
 (require 'init-git)
 (require 'init-paredit)
+(require 'init-powerline)
 
 (require 'init-c)
 (require 'init-compile)
