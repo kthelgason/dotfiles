@@ -13,6 +13,7 @@
  '(exec-path-from-shell-arguments (quote ("-l")))
  '(fci-rule-color "#073642")
  '(session-use-package t nil (session))
+ '(sql-postgres-options (quote ("-P" "pager=off" "-X" "-x")))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote

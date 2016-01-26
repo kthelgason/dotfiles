@@ -2,6 +2,9 @@
 (after-load 'sql
   (require 'sql-indent))
 
+(defun sanityinc/never-indent ()
+  (set (make-local-variable 'indent-line-function) (lambda () 'noindent)))
+
 (defun sanityinc/pop-to-sqli-buffer ()
   "Switch to the corresponding sqli buffer."
   (interactive)
