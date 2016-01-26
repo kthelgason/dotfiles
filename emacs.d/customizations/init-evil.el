@@ -25,6 +25,7 @@
 (evil-set-initial-state 'esup-mode 'emacs)
 (evil-set-initial-state 'diff-mode 'emacs)
 (evil-set-initial-state 'term-mode 'emacs)
+(evil-set-initial-state 'sqli-mode 'emacs)
 (evil-set-initial-state 'multi-term-mode 'emacs)
 
 (evil-define-text-object sigsegv/evil-next-match (count &optional beg end type)

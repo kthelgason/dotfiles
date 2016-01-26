@@ -40,6 +40,7 @@
 (require 'init-lisp)
 (require 'init-clojure)
 (require 'init-ocaml)
+(require 'init-sql)
 
 (require 'init-misc)
 
