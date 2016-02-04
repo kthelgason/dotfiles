@@ -8,7 +8,7 @@
   (after-load 'evil
     (setq evil-shift-width 4)))
 
-(add-hook 'c-initialization-hook 'my-set-evil-shift-width)
+(add-hook 'c-initialization-hook 'sigsegv/set-evil-shift-width)
 
 (defun sigsegv/compile-and-run ()
   (interactive)

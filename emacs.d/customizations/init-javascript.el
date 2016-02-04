@@ -20,8 +20,7 @@
                 js2-mode-show-strict-warnings nil)
   (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
 
-  (after-load 'evil
-    (setq evil-shift-width 2))
+  (setq-default evil-shift-width 2)
   (after-load 'js2-mode
     (js2-imenu-extras-setup)))
 
@@ -36,7 +35,7 @@
 ;; ---------------------------------------------------------------------------
 
 (when (maybe-require-package 'js-comint)
-  (setq inferior-js-program-command "js")
+  (setq inferior-js-program-command "node")
 
   (defvar inferior-js-minor-mode-map (make-sparse-keymap))
   (define-key inferior-js-minor-mode-map "\C-x\C-e" 'js-send-last-sexp)
