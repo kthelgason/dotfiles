@@ -27,7 +27,7 @@
            (concat (projectile-project-root) "src")))
       )))
 
-(add-hook 'c++-mode-hook 'my-c++-mode-setup)
+(add-hook 'c++-mode-hook 'sigsegv/c++-mode-setup)
 
 (after-load 'evil
   (evil-define-key 'insert c-mode-map (kbd "TAB") 'c-indent-line-or-region)
