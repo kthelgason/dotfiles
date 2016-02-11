@@ -46,10 +46,19 @@
 
   (define-minor-mode inferior-js-keys-mode
     "Bindings for communicating with an inferior js interpreter."
-    nil " InfJS" inferior-js-minor-mode-map)
+    nil " InfJS" inferior-js-minor-mode-map
+    :after-hook (progn
+                  (ansi-color-for-comint-mode-on)
+                  (add-to-list
+                   'comint-preoutput-filter-functions
+                   (lambda (output)
+                     (replace-regexp-in-string "\033\\[[0-9]+[GKJ]" "" output)))))
 
   (dolist (hook '(js2-mode-hook js-mode-hook))
-    (add-hook hook 'inferior-js-keys-mode))
+    (add-hook hook (lambda ()
+                     (inferior-js-keys-mode)
+                     (ansi-color-for-comint-mode-on))))
+
   (diminish 'inferior-js-keys-mode))
 
 (provide 'init-javascript)
