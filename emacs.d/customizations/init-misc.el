@@ -13,6 +13,9 @@
 
 (setq-default regex-tool-backend 'perl)
 
+;; No friggin' bell
+(setq ring-bell-function 'ignore)
+
 ;; default to utf8
 (set-language-environment 'utf-8)
 (setq locale-coding-system 'utf-8)
