@@ -27,6 +27,7 @@
 (evil-set-initial-state 'term-mode 'emacs)
 (evil-set-initial-state 'sql-interactive-mode 'emacs)
 (evil-set-initial-state 'multi-term-mode 'emacs)
+(evil-set-initial-state 'cider-stacktrace-mode 'emacs)
 
 (evil-define-text-object sigsegv/evil-next-match (count &optional beg end type)
   "Select next match."
@@ -183,10 +184,7 @@ whether to call indent-according-to-mode."
 (define-key evil-normal-state-map (kbd "<s-return>")
   'electric-indent-just-newline)
 
-;; (define-key evil-normal-state-map (kbd "SPC") 'isearch-forward-regexp)
-(define-key evil-normal-state-map (kbd "SPC a") 'ag)
 (define-key evil-normal-state-map (kbd "C-q")   'universal-argument)
-
 (define-key evil-normal-state-map (kbd "C-h")   'evil-window-left)
 (define-key evil-normal-state-map (kbd "C-j")   'evil-window-down)
 (define-key evil-normal-state-map (kbd "C-k")   'evil-window-up)
@@ -205,8 +203,12 @@ whether to call indent-according-to-mode."
 (define-key evil-motion-state-map "$"           'evil-end-of-line)
 (define-key evil-motion-state-map "0"           'evil-beginning-of-line)
 
-(define-key evil-normal-state-map "/"           'evil-search-forward)
+(define-key evil-normal-state-map (kbd "SPC")   'evil-search-forward)
 (define-key evil-normal-state-map (kbd "Y") (kbd "y$"))
+
+(evil-leader/set-key
+  "a" 'ag
+  "h" 'help)
 
 (evil-ex-define-cmd "Q"  'evil-quit)
 (evil-ex-define-cmd "Qa" 'evil-quit-all)
