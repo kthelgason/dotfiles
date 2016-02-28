@@ -204,6 +204,10 @@ function insert-selecta-path-in-command-line() {
     zle reset-prompt
 }
 
+function weather {
+    curl "http://wttr.in/$1"
+}
+
 # Create the zle widget
 zle -N insert-selecta-path-in-command-line
 bindkey "^S" "insert-selecta-path-in-command-line"
