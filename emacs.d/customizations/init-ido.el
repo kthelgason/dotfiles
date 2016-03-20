@@ -1,6 +1,8 @@
+(require-package 'flx-ido)
 ;; Use C-f during file selection to switch to regular find-file
 (ido-mode t)
 (ido-everywhere t)
+(flx-ido-mode t)
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point nil)
 (setq ido-auto-merge-work-directories-length 0)
