@@ -28,6 +28,7 @@
 (evil-set-initial-state 'sql-interactive-mode 'emacs)
 (evil-set-initial-state 'multi-term-mode 'emacs)
 (evil-set-initial-state 'cider-stacktrace-mode 'emacs)
+(evil-set-initial-state 'inferior-js-mode 'emacs)
 
 (evil-define-text-object sigsegv/evil-next-match (count &optional beg end type)
   "Select next match."
