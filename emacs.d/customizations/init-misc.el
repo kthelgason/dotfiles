@@ -13,6 +13,8 @@
 
 (setq-default regex-tool-backend 'perl)
 
+(setq auto-save-default nil)
+
 ;; No friggin' bell
 (setq ring-bell-function 'ignore)
 
