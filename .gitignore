@@ -18,4 +18,8 @@ emacs.d/ido.last
 emacs.d/abbrev_defs
 emacs.d/.session
 emacs.d/.emacs.desktop
+emacs.d/projectile.cache
+emacs.d/games
+emacs.d/haskell-fun
+emacs.d/.emacs.desktop.lock
 zsh/cache
