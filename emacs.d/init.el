@@ -1,6 +1,7 @@
 
 ;; Init.el
 (add-to-list 'load-path "~/.emacs.d/customizations")
+(add-to-list 'load-path "~/.emacs.d/customizations/spaceline")
 (require 'init-benchmarking) ;; Measure startup time
 (setq gc-cons-threshold (* 128 1024 1024))
 
@@ -40,6 +41,7 @@
 (require 'init-web)
 (require 'init-lisp)
 (require 'init-clojure)
+(require 'init-elixir)
 (require 'init-ocaml)
 (require 'init-sql)
 
