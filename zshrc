@@ -1,5 +1,5 @@
-for config_file ($HOME/.zsh/*); do
-  source $config_file
+for config_file ($HOME/.zsh/*) do
+    source $config_file
 done
 
 zmodload -i zsh/complist
@@ -49,7 +49,7 @@ alias ea="vim ~/.zshrc && reload"
 alias tags="/usr/local/bin/tag --list `ls`"
 alias eip="curl icanhazip.com"
 alias fuck='$(thefuck $(fc -ln -1))'
-alias getarch="ssh -p 3022 localhost"
+alias getarch="ssh -p 3022 -A localhost"
 alias plog="cat $PRIVOXY_LOG"
 alias findpid="ps aux | selecta | awk '{print \$2}'"
 alias diff="colordiff -u"
@@ -93,6 +93,10 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LSCOLORS}
 autoload -U compinit
 compinit
 
+# Tab-completion setup
+listsysctls () { set -A reply $(sysctl -AN ${1%.*}) }
+compctl -K listsysctls sysctl
+
 # Terminal Options
 setopt AUTO_CD             # implicate cd for non-commands
 setopt CD_ABLE_VARS        # read vars in cd
@@ -123,7 +127,14 @@ SAVEHIST=10000
 set -o emacs
 
 # OPAM configuration
-. /Users/kthelgason/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+. /Users/kthelgason/.opam/opam-init/init.zsh
+
+# Source chruby script
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+chruby ruby
+
+# Z
+source `brew --prefix`/etc/profile.d/z.sh
 
 #------------------------------------
 # functions
