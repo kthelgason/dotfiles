@@ -11,7 +11,11 @@
 
 (defun sigsegv/alchemist-mode ()
   (alchemist-mode)
-  (diminish 'alchemist-mode "⚗"))
+  (setq alchemist-test-status-modeline nil)
+  (diminish 'alchemist-mode "⚗")
+  (diminish 'alchemist-phoenix-mode))
+
+(add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-mode))
 
 (after-load 'elixir-mode
   (add-hook 'elixir-mode-hook 'sigsegv/alchemist-mode)
