@@ -108,7 +108,7 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 chruby ruby
 
 # Z
-source `brew --prefix`/etc/profile.d/z.sh
+. `brew --prefix`/etc/profile.d/z.sh
 
 #------------------------------------
 # functions

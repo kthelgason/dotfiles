@@ -103,6 +103,9 @@ case $state in
             (test)
                 _files
             ;;
+            (run)
+                _files
+            ;;
         esac
     ;;
 esac
