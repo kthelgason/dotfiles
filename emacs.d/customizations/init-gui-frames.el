@@ -13,6 +13,7 @@
 ;; Window size and features
 ;;----------------------------------------------------------------------------
 (setq indicate-empty-lines t)
+(setq ns-use-srgb-colorspace nil)
 
 (set-fringe-style '(8 . 0))
 

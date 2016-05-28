@@ -85,5 +85,14 @@
         (error "Cannot open tramp file")
       (browse-url (concat "file://" file-name)))))
 
+;;----------------------------------------------------------------------------
+;; Threading macro Clojure-style
+;;----------------------------------------------------------------------------
+(defmacro sigsegv/-> (&rest body)
+  (let ((result (pop body)))
+    (dolist (form body result)
+      (setq result (append (list (car form) result)
+                           (cdr form))))))
+
 
 (provide 'init-utils)

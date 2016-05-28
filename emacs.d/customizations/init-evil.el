@@ -29,6 +29,7 @@
 (evil-set-initial-state 'multi-term-mode 'emacs)
 (evil-set-initial-state 'cider-stacktrace-mode 'emacs)
 (evil-set-initial-state 'inferior-js-mode 'emacs)
+(evil-set-initial-state 'alchemist-mix-mode 'emacs)
 
 (evil-define-text-object sigsegv/evil-next-match (count &optional beg end type)
   "Select next match."
@@ -193,6 +194,7 @@ whether to call indent-according-to-mode."
 (define-key evil-normal-state-map (kbd "-") (kbd "dd"))
 
 (define-key evil-normal-state-map "a"           'evil-append)
+(define-key evil-normal-state-map "q"           nil)
 (define-key evil-normal-state-map "A"           'sigsegv/electric-append-with-indent)
 (define-key evil-normal-state-map "$"           'sigsegv/smart-end)
 (define-key evil-normal-state-map "0"           'sigsegv/smart-home)

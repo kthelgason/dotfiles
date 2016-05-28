@@ -35,6 +35,7 @@
 (add-hook 'prog-mode-hook 'paredit-everywhere-mode)
 (add-hook 'css-mode-hook 'paredit-everywhere-mode)
 (after-load 'paredit-everywhere
+  (diminish 'paredit-everywhere-mode)
   (define-key paredit-everywhere-mode-map [remap kill-sentence] 'paredit-kill))
 
 (provide 'init-paredit)
