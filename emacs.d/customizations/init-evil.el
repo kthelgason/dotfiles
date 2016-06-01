@@ -170,6 +170,19 @@ whether to call indent-according-to-mode."
   (if (sigsegv/sensible-to-indent-p)
       (indent-according-to-mode)))
 
+(defun sigsegv/select-line ()
+  (interactive)
+  (move-beginning-of-line nil)
+  (set-mark-command nil)
+  (move-end-of-line nil)
+  (setq deactivate-mark nil))
+
+(defun sigsegv/comment ()
+  (interactive)
+  (if (not (use-region-p))
+      (sigsegv/select-line))
+  (comment-or-uncomment-region (region-beginning) (region-end)))
+
 ;; exiting insert mode -> delete trailing whitespace
 (add-hook 'evil-insert-state-exit-hook 'sigsegv/exit-insert-state)
 (add-hook 'evil-insert-state-entry-hook 'sigsegv/enter-insert-state)
@@ -211,6 +224,7 @@ whether to call indent-according-to-mode."
 
 (evil-leader/set-key
   "a" 'ag
+  "cc" 'sigsegv/comment
   "h" 'help)
 
 (evil-ex-define-cmd "Q"  'evil-quit)
