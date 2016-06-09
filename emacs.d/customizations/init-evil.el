@@ -205,6 +205,7 @@ whether to call indent-according-to-mode."
 (define-key evil-normal-state-map (kbd "C-k")   'evil-window-up)
 (define-key evil-normal-state-map (kbd "C-l")   'evil-window-right)
 (define-key evil-normal-state-map (kbd "-") (kbd "dd"))
+(define-key evil-normal-state-map (kbd "M-.") nil)
 
 (define-key evil-normal-state-map "a"           'evil-append)
 (define-key evil-normal-state-map "q"           nil)
