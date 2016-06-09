@@ -30,6 +30,7 @@
 (require 'init-editing)
 (require 'init-fci)
 (require 'init-git)
+(require 'init-ggtags)
 (require 'init-paredit)
 (require 'init-powerline)
 (require 'init-projectile)
