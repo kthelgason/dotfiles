@@ -1,12 +1,15 @@
 ;; Fill column indicator
 (require-package 'fill-column-indicator)
+
+(setq fci-rule-column 80)
+
 (defun sanityinc/prog-mode-fci-settings ()
   (turn-on-fci-mode)
   (when show-trailing-whitespace
     (set (make-local-variable 'whitespace-style) '(face trailing))
     (whitespace-mode 1)))
 
-;;(add-hook 'prog-mode-hook 'sanityinc/prog-mode-fci-settings)
+(add-hook 'prog-mode-hook 'sanityinc/prog-mode-fci-settings)
 
 (defun sanityinc/fci-enabled-p ()
   (bound-and-true-p fci-mode))
