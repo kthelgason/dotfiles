@@ -100,10 +100,7 @@ case $state in
             (help)
                 _arguments ':feature:_task_list'
             ;;
-            (test)
-                _files
-            ;;
-            (run)
+            (*)
                 _files
             ;;
         esac
