@@ -34,6 +34,8 @@
 
 ;; Template editing
 (require-package 'web-mode)
+(after-load 'web-mode
+  (setq web-mode-markup-indent-offset 2))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
 
