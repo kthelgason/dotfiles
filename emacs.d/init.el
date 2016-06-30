@@ -45,6 +45,7 @@
 (require 'init-elixir)
 (require 'init-ocaml)
 (require 'init-sql)
+(require 'init-latex)
 
 (require 'init-misc)
 

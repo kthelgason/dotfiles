@@ -4,7 +4,7 @@
 (require 'color-theme-sanityinc-solarized)
 
 (setq custom-safe-themes t)
-(load-theme 'sanityinc-tomorrow-night)
+(load-theme 'reykjavik)
 
 ;;------------------------------------------------------------------------------
 ;; Toggle between light and dark

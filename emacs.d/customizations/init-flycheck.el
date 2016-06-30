@@ -16,7 +16,6 @@ the BUFFER that was checked respectively.
 
 See URL `https://github.com/lpil/dogma' for more information
 about dogma."
-  (print output)
   (cl-flet ((alist-get (key alis) (cdr (assoc key alis))))
     (let* ((json-object-type 'alist)
            (json-array-type  'list)
@@ -44,15 +43,8 @@ about dogma."
     "An Elixir syntax checker using the Dogma analysis tool.
 
 See URL `https://github.com/lpil/dogma/'."
-    :command ("mix" "dogma" "--format=json" source)
+    :command ("dogma" "--format=json" source)
     :error-parser sigsegv/parse-elixir-dogma
-    ;; :predicate
-    ;; (lambda ()
-    ;;   (let* ((mix (flycheck-checker-executable 'elixir-dogma))
-    ;;          (tasks (mapcar (lambda (line)
-    ;;                           (nth 1 (split-string line "[ ]+")))
-    ;;                         (ignore-errors  (process-lines mix "help")))))
-    ;;     (member "dogma" tasks)))
     :modes elixir-mode)
   (add-to-list 'flycheck-checkers 'elixir-dogma))
 
