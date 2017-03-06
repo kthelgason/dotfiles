@@ -1,3 +1,4 @@
+# -*- mode: sh -*-
 for config_file ($HOME/.zsh/*) do
     source $config_file
 done
@@ -29,7 +30,7 @@ export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-export EDITOR="vim"
+export EDITOR="$HOME/homebrew/bin/emacsclient -t"
 export VISUAL="view"
 
 alias ta="tmux att"
@@ -41,11 +42,11 @@ alias latexmk="latexmk -pvc -interaction=nonstopmode"
 alias update="brew update && brew upgrade --all"
 alias gimme="brew install"
 alias v="~/.v"
-alias vi="mvim"
+alias vi="$EDITOR"
 alias v="view"
 alias finder="open . &"
 alias reload="source ~/.zshrc"
-alias ea="vim ~/.zshrc && reload"
+alias ea="$EDITOR ~/.zshrc && reload"
 alias tags="/usr/local/bin/tag --list `ls`"
 alias eip="curl icanhazip.com"
 alias fuck='$(thefuck $(fc -ln -1))'
@@ -55,8 +56,7 @@ alias findpid="ps aux | selecta | awk '{print \$2}'"
 alias diff="colordiff -u"
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias em="/Applications/Emacs.app/Contents/MacOS/Emacs"
-alias e='emacsclient -t'
-alias ec='emacsclient -c'
+alias gti='git'
 
 # Python/django
 alias pyhton="python"
@@ -193,7 +193,26 @@ function weather {
     curl "http://wttr.in/$1"
 }
 
+function search-replace-in-folder {
+    local search=$1
+    local replace=$2
+    local folder=$3
+    for file in $(ag -l $1 $3); do
+        echo "Processing file ${file}"
+        sed -i "" "s/${search}/${replace}/g" $file
+    done
+}
+
 # Create the zle widget
 zle -N insert-selecta-path-in-command-line
 bindkey "^S" "insert-selecta-path-in-command-line"
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/kthelgason/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/kthelgason/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/kthelgason/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/kthelgason/google-cloud-sdk/completion.zsh.inc'
+fi
