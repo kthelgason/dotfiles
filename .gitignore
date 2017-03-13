@@ -3,6 +3,7 @@
 vim/sessions
 vim/bundle/*
 vim/spell
+vim/.netrwhist
 emacs.d/auto-save-list/
 emacs.d/elpa/
 emacs.d/recentf
