@@ -52,35 +52,6 @@ function minutes_since_last_commit {
     fi
 }
 
-function prompt_grb_scm_time_since_commit() {
-	local -A pc
-	pc=(${(kv)wunjo_prompt_colors})
-
-	if zgit_inworktree; then
-        local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
-        if [ "$MINUTES_SINCE_LAST_COMMIT" -eq -1 ]; then
-          COLOR="$pc[scm_time_uncommitted]"
-          local SINCE_LAST_COMMIT="${COLOR}uncommitted$pc[reset]"  
-        else
-          if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
-            COLOR="$pc[scm_time_long]"
-          elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
-            COLOR="$pc[scm_time_medium]"
-          else
-            COLOR="$pc[scm_time_short]"
-          fi
-          local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m$pc[reset]"
-        fi
-        echo $SINCE_LAST_COMMIT
-    fi
-}
-
-function prompt_grb_scm_info() {
-    if zgit_inworktree; then
-        echo "($(prompt_wunjo_scm_branch))"
-    fi
-}
-
 prompt_grb_setup() {
     local verbose
     if [[ $TERM == screen* ]] && [ -n "$STY" ]; then
@@ -304,6 +275,9 @@ prompt_wunjo_scm_status() {
 
 prompt_wunjo_scm_branch() {
 	zgit_isgit || return
+    if [[ $(pwd) =~ "chromium" ]]; then
+        return
+    fi
 	local -A pc
 	pc=(${(kv)wunjo_prompt_colors})
 
