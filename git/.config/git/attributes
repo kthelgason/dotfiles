@@ -1,0 +1,4 @@
+*.c      diff=cpp
+*.cpp	 diff=cpp
+*.h      diff=cpp
+Rakefile diff=ruby

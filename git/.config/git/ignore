@@ -1,0 +1,15 @@
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# CTags/ETags
+TAGS
+CTAGS
+GTAGS
+RTAGS
+tags
+
+# Emacs
+.ensime
+.ensime_cache/
