@@ -1,13 +1,6 @@
 fpath=($fpath $HOME/.zsh)
 typeset -U fpath
 
-export PATH=$PATH:$HOME/bin
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="$PATH:/usr/texbin"
-export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
-export NODE_PATH=/usr/local/lib/node_modules
-
 # Privoxy log
 export PRIVOXY_LOG="/usr/local/var/log/privoxy/logfile"
 

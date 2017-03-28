@@ -14,6 +14,15 @@ alias ll='ls -lG'
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
+export PATH=$PATH:$HOME/bin
+export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$PATH:/usr/texbin"
+export PATH=$HOME/homebrew/bin:$PATH
+export PATH=$HOME/bin/depot_tools:$PATH
+export MANPATH=$MANPATH:/usr/local/opt/erlang/lib/erlang/man
+export NODE_PATH=/usr/local/lib/node_modules
+
 # Use C-x C-e to edit the current command line
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -41,7 +50,6 @@ alias latexmk="latexmk -pvc -interaction=nonstopmode"
 # General aliases
 alias update="brew update && brew upgrade --all"
 alias gimme="brew install"
-alias v="~/.v"
 alias vi="$EDITOR"
 alias v="view"
 alias finder="open . &"
@@ -55,8 +63,9 @@ alias plog="cat $PRIVOXY_LOG"
 alias findpid="ps aux | selecta | awk '{print \$2}'"
 alias diff="colordiff -u"
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-alias em="/Applications/Emacs.app/Contents/MacOS/Emacs"
 alias gti='git'
+alias ec='emacsclient'
+alias et='emacsclient -t'
 
 # Python/django
 alias pyhton="python"
@@ -67,9 +76,6 @@ alias bake="python manage.py"
 
 # Ruby/Rails
 alias r="rails"
-
-# Node
-alias mka="foreman run -e /Users/kthelgason/oz/core_z/environments/test.env mocha"
 
 # Terminal Options
 setopt AUTO_CD             # implicate cd for non-commands
@@ -101,11 +107,11 @@ SAVEHIST=10000
 set -o emacs
 
 # OPAM configuration
-. /Users/kthelgason/.opam/opam-init/init.zsh
+# . /Users/kthelgason/.opam/opam-init/init.zsh
 
 # Source chruby script
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby ruby
+#source /usr/local/opt/chruby/share/chruby/chruby.sh
+#chruby ruby
 
 # Z
 . `brew --prefix`/etc/profile.d/z.sh
@@ -216,3 +222,4 @@ fi
 if [ -f /Users/kthelgason/google-cloud-sdk/completion.zsh.inc ]; then
   source '/Users/kthelgason/google-cloud-sdk/completion.zsh.inc'
 fi
+
