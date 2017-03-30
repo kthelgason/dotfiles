@@ -1,5 +1,0 @@
-#!/usr/bin/perl
-
-for ($i = 0; $i < @ARGV; $i++) {
-  printf("%d\t= 0x%x\t = %b\n", $ARGV[$i], $ARGV[$i], $ARGV[$i]);
-}

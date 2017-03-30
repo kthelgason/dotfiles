@@ -1,5 +1,0 @@
-#! /bin/bash
-vmrun -T fusion start ~/Documents/Virtual\ Machines.localized/Arch.vmwarevm/Arch.vmx nogui > /dev/null
-ip=$(vmrun -T fusion getGuestIPAddress ~/Documents/Virtual\ Machines.localized/Arch.vmwarevm/Arch.vmx)
-echo "VM IP is $ip, ssh-ing in..."
-ssh kthelgason@$ip
