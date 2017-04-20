@@ -17,6 +17,7 @@ tap 'homebrew/dupes'
 
 # System tools
 brew 'htop'
+
 # Network tools
 brew 'nmap'
 brew 'privoxy'
@@ -25,6 +26,7 @@ brew 'privoxy'
 brew 'coreutils'
 brew 'findutils'
 brew 'gnu-sed'
+brew 'automake'
 
 # Shell
 brew 'zsh'                      
