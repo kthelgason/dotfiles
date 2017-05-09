@@ -81,6 +81,9 @@ SAVEHIST=10000
 
 set -o emacs
 
+# Make sure homebrew/bin is first in PATH
+export PATH=$HOME/homebrew/bin:$PATH
+
 # OPAM configuration
 # . /Users/kthelgason/.opam/opam-init/init.zsh
 
@@ -198,5 +201,3 @@ if [ -f /Users/kthelgason/google-cloud-sdk/completion.zsh.inc ]; then
   source '/Users/kthelgason/google-cloud-sdk/completion.zsh.inc'
 fi
 
-# Make sure homebrew/bin is first in PATH
-export PATH=$HOME/homebrew/bin:$PATH

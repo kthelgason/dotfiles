@@ -1,0 +1,47 @@
+#!/usr/bin/env gawk -i inplace -f
+
+function get_expected_guard() {
+    split(FILENAME, arr, /\//)
+    delete arr[1]
+    s = join(arr, "_")
+    gsub(/\./, "_", s)
+    return toupper(s)
+}
+
+function join(array, sep) {
+    result = ""
+    for (i in array)
+        result = result array[i] sep
+    return result
+}
+
+BEGIN {
+    ifndef_seen = 0
+    define = ""
+    expected_guard = ""
+}
+
+/#ifndef/ {
+    if (!ifndef_seen) {
+        ifndef_seen = 1
+        define = $2
+        expected_guard = get_expected_guard()
+        if (define != expected_guard) {
+            $2 = expected_guard
+        }
+    }
+}
+
+/#define/ {
+    if ($2 == define && $2 != expected_guard)
+        $2 = expected_guard
+}
+
+/#endif/ {
+    if ($3 == define && $3 != expected_guard) {
+        $3 = expected_guard
+        $1 = $1 " "
+    }
+}
+
+{ print }
