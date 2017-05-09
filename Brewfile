@@ -27,6 +27,7 @@ brew 'coreutils'
 brew 'findutils'
 brew 'gnu-sed'
 brew 'automake'
+brew 'gawk'
 
 # Shell
 brew 'zsh'                      
@@ -42,6 +43,7 @@ brew 'jq'
 # Editing
 brew 'macvim', args: ['override-system-vi']
 brew 'emacs', args: ['with-cocoa']
+brew 'rtags'
 
 # Images
 brew 'imagemagick'              
