@@ -13,3 +13,4 @@ tags
 # Emacs
 .ensime
 .ensime_cache/
+.dir-locals.el
