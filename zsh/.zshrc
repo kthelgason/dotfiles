@@ -187,6 +187,17 @@ function search-replace-in-folder {
     done
 }
 
+# Make pbcopy/paste work as expected in tmux
+function _wrap {
+    if [ -n "$TMUX" ]; then
+        reattach-to-user-namespace $1
+    else
+        $1
+    fi
+}
+alias pbcopy="_wrap pbcopy"
+alias pbpaste="_wrap pbpaste"
+
 # Create the zle widget
 zle -N insert-selecta-path-in-command-line
 bindkey "^S" "insert-selecta-path-in-command-line"
