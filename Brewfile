@@ -44,6 +44,7 @@ brew 'jq'
 brew 'macvim', args: ['override-system-vi']
 brew 'emacs', args: ['with-cocoa']
 brew 'rtags'
+brew 'colordiff'
 
 # Images
 brew 'imagemagick'              

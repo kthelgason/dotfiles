@@ -44,3 +44,5 @@
 	program = /Users/kthelgason/homebrew/bin/gpg2
 [credential]
 	helper = osxkeychain
+[merge]
+	tool = opendiff

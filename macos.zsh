@@ -135,6 +135,9 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Setting a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 0
 
+# Fix super annoying emacs bug
+defaults write org.gnu.Emacs NSAppSleepDisabled -bool YES
+
 # Restart affected apps
 apps=(
   'Activity Monitor'
