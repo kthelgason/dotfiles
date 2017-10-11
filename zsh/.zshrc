@@ -144,6 +144,12 @@ function fancy-ctrl-z {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
+function up-dir {
+    BUFFER=$(echo $BUFFER | rev | cut -d '/' -f 2- | rev)
+}
+zle -N up-dir
+bindkey '\C-g' up-dir
+
 # Vim client-server helpers
 
 VI_SERVER="VIM"
@@ -197,6 +203,8 @@ function _wrap {
 }
 alias pbcopy="_wrap pbcopy"
 alias pbpaste="_wrap pbpaste"
+
+
 
 # Create the zle widget
 zle -N insert-selecta-path-in-command-line
