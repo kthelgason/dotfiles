@@ -25,10 +25,6 @@ function sudo {
   command sudo "$@"
 }
 
-if [[ $(fdesetup isactive) != "true" ]]; then
-  exit 'ENABLE FILEVAULT!'
-fi
-
 # Change my shell
 if [[ $SHELL != */zsh ]]; then
   echo "Will ask for your password to turn change your login shell..."
@@ -154,6 +150,13 @@ apps=(
 read "reply?Kill affected apps? [yes|no] "
 if [[ $reply == "yes" ]]; then
   for app in $apps; do killall "$app" &> /dev/null; done
+fi
+
+# Install Homebrew.
+if ! command -v brew > /dev/null 2>&1; then
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+  echo "Brew already installed."
 fi
 
 # Let Homebrew track me, they appreciate it; see

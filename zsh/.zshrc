@@ -82,7 +82,7 @@ SAVEHIST=10000
 set -o emacs
 
 # Make sure homebrew/bin is first in PATH
-export PATH=$HOME/homebrew/bin:$PATH
+export PATH=$HOME/brew/bin:$PATH
 
 # OPAM configuration
 # . /Users/kthelgason/.opam/opam-init/init.zsh
